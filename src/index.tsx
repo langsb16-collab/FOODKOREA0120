@@ -17,6 +17,140 @@ app.use('/static/*', serveStatic({ root: './public' }))
 
 // API Routes
 
+// Database initialization endpoint (development only)
+app.post('/api/init-db', async (c) => {
+  const { DB } = c.env
+
+  try {
+    // Read schema from migrations file
+    const schema = `
+      CREATE TABLE IF NOT EXISTS restaurants (
+        id TEXT PRIMARY KEY DEFAULT (lower(hex(randomblob(16)))),
+        name_ko TEXT NOT NULL,
+        name_en TEXT,
+        name_ja TEXT,
+        name_zh TEXT,
+        name_th TEXT,
+        region TEXT NOT NULL CHECK(region IN ('수도권', '강원도', '충청도', '전라도', '경상도', '제주도')),
+        sector TEXT NOT NULL CHECK(sector IN ('공항권', '기차권', '전통시장', '노포', '향토음식', '자연권')),
+        city TEXT NOT NULL,
+        address TEXT NOT NULL,
+        lat REAL,
+        lng REAL,
+        cuisine_type TEXT,
+        avg_price INTEGER,
+        local_score INTEGER DEFAULT 0,
+        gov_certified INTEGER DEFAULT 0,
+        airport_priority TEXT CHECK(airport_priority IN ('1순위', '2순위', '기타')),
+        description_ko TEXT,
+        description_en TEXT,
+        description_ja TEXT,
+        description_zh TEXT,
+        description_th TEXT,
+        status TEXT DEFAULT '운영' CHECK(status IN ('운영', '휴업', '폐업')),
+        created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+        updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
+      );
+
+      CREATE TABLE IF NOT EXISTS reviews (
+        id TEXT PRIMARY KEY DEFAULT (lower(hex(randomblob(16)))),
+        restaurant_id TEXT NOT NULL,
+        user_country TEXT CHECK(user_country IN ('KR', 'JP', 'CN', 'TW', 'TH', 'OTHER')),
+        visit_date DATE,
+        content_original TEXT NOT NULL,
+        content_ko TEXT,
+        content_en TEXT,
+        content_ja TEXT,
+        content_zh TEXT,
+        content_th TEXT,
+        revisit_mention INTEGER DEFAULT 0,
+        rating INTEGER CHECK(rating >= 1 AND rating <= 5),
+        approved INTEGER DEFAULT 0,
+        created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (restaurant_id) REFERENCES restaurants(id)
+      );
+
+      CREATE TABLE IF NOT EXISTS packages (
+        id TEXT PRIMARY KEY DEFAULT (lower(hex(randomblob(16)))),
+        title_ko TEXT NOT NULL,
+        title_en TEXT,
+        title_ja TEXT,
+        title_zh TEXT,
+        title_th TEXT,
+        duration TEXT CHECK(duration IN ('3박4일', '4박5일')),
+        regions TEXT,
+        price_budget INTEGER,
+        price_standard INTEGER,
+        price_premium INTEGER,
+        hotel_grade TEXT,
+        restaurants TEXT,
+        min_pax INTEGER,
+        max_pax INTEGER,
+        description_ko TEXT,
+        description_en TEXT,
+        description_ja TEXT,
+        description_zh TEXT,
+        description_th TEXT,
+        status TEXT DEFAULT '판매중' CHECK(status IN ('판매중', '중단', '품절')),
+        created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+        updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
+      );
+
+      CREATE TABLE IF NOT EXISTS bookings (
+        id TEXT PRIMARY KEY DEFAULT (lower(hex(randomblob(16)))),
+        package_id TEXT NOT NULL,
+        customer_name TEXT NOT NULL,
+        customer_email TEXT NOT NULL,
+        customer_phone TEXT,
+        customer_country TEXT,
+        travel_date DATE NOT NULL,
+        num_people INTEGER NOT NULL,
+        package_type TEXT CHECK(package_type IN ('저가형', '스탠다드', '고급형')),
+        total_price INTEGER NOT NULL,
+        status TEXT DEFAULT '대기' CHECK(status IN ('대기', '확정', '취소', '완료')),
+        special_requests TEXT,
+        created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+        updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (package_id) REFERENCES packages(id)
+      );
+    `
+
+    // Execute schema statements
+    const statements = schema.split(';').filter(s => s.trim())
+    for (const statement of statements) {
+      if (statement.trim()) {
+        await DB.prepare(statement).run()
+      }
+    }
+
+    // Load seed data if tables are empty
+    const { results: restaurantCount } = await DB.prepare('SELECT COUNT(*) as count FROM restaurants').all()
+    if (restaurantCount[0].count === 0) {
+      // Insert sample restaurants
+      await DB.prepare(`
+        INSERT INTO restaurants (name_ko, name_en, name_ja, name_zh, region, sector, city, address, cuisine_type, avg_price, local_score, gov_certified, airport_priority, description_ko, description_en, description_ja, description_zh, status)
+        VALUES 
+        ('이문설농탕', 'Imun Seolleongtang', '李門雪濃湯', '李门雪浓汤', '수도권', '노포', '서울시 종로구', '서울특별시 종로구 돈화문로 152', '설렁탕', 15000, 95, 1, '1순위', '1904년부터 100년 이상 이어온 전통 설렁탕 노포입니다. 진한 사골 육수와 부드러운 고기가 일품입니다.', 'Traditional seolleongtang (ox bone soup) restaurant established in 1904. Famous for rich bone broth and tender meat.', '1904年創業の伝統的なソルロンタン（牛骨スープ）の老舗です。', '1904年创业的传统雪浓汤老店。', '운영'),
+        ('광장시장 육회', 'Gwangjang Market Yukhoe', '広蔵市場ユッケ', '广藏市场生拌牛肉', '수도권', '전통시장', '서울시 종로구', '서울특별시 종로구 창경궁로 88 광장시장', '육회', 20000, 90, 1, '1순위', '서울에서 가장 오래된 전통시장 광장시장의 명물 육회입니다. 신선한 생고기에 배와 참기름으로 버무립니다.', 'Famous yukhoe (Korean beef tartare) at Seoul''s oldest traditional market. Fresh raw beef mixed with pear and sesame oil.', 'ソウルで最も古い伝統市場、広蔵市場の名物ユッケです。', '首尔最古老传统市场广藏市场的著名生拌牛肉。', '운영'),
+        ('삼진어묵 본점', 'Samjin Eomuk Main Store', '三進おでん本店', '三进鱼糕总店', '경상도', '공항권', '부산시 영도구', '부산광역시 영도구 태종로 99', '어묵', 8000, 88, 1, '1순위', '1953년 창업한 부산 대표 어묵 전문점입니다. 신선한 생선 살로 만든 수제 어묵이 유명합니다.', 'Busan''s representative fish cake specialty store established in 1953. Famous for handmade fish cakes.', '1953年創業の釜山を代表する練り物専門店です。', '1953年创立的釜山代表性鱼糕专门店。', '운영')
+      `).run()
+
+      // Insert sample packages
+      await DB.prepare(`
+        INSERT INTO packages (title_ko, title_en, title_ja, title_zh, duration, regions, price_budget, price_standard, price_premium, hotel_grade, description_ko, description_en, status)
+        VALUES 
+        ('수도권 노포 미식 투어 3박4일', 'Seoul Old Restaurant Tour 3N4D', 'ソウル老舗グルメツアー3泊4日', '首尔老店美食之旅3晚4天', '3박4일', '["수도권"]', 700, 1100, 1800, '3성급', '서울의 100년 전통 노포를 중심으로 한 미식 투어입니다. 설렁탕, 냉면, 육회 등 전통 음식을 맛볼 수 있습니다.', 'Culinary tour centered on Seoul''s 100-year-old traditional restaurants. Taste seolleongtang, naengmyeon, yukhoe.', '판매중'),
+        ('부산 경상도 해안 미식 투어 4박5일', 'Busan Gyeongsang Coastal Cuisine Tour 4N5D', '釜山慶尚道海岸グルメツアー4泊5日', '釜山庆尚道海岸美食之旅4晚5天', '4박5일', '["경상도"]', 800, 1300, 2100, '4성급', '부산과 경상도 해안을 따라 신선한 해산물과 돼지국밥을 즐기는 투어입니다.', 'Tour along Busan and Gyeongsang coast enjoying fresh seafood and pork soup rice.', '판매중')
+      `).run()
+    }
+
+    return c.json({ success: true, message: 'Database initialized successfully' })
+  } catch (error: any) {
+    console.error('Database initialization error:', error)
+    return c.json({ error: error.message }, 500)
+  }
+})
+
 // Translations endpoint
 app.get('/api/translations', (c) => {
   return c.json(translations)
