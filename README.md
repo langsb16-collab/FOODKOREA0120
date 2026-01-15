@@ -25,6 +25,8 @@
    - 공항 중심 최적화 동선
 
 4. **관리자 페이지**
+   - **별도 URL로 분리** (/admin)
+   - **메인 사이트에서 숨김** (네비게이션에 표시 안 됨)
    - 맛집 관리 (CRUD)
    - 후기 관리 및 승인
    - 패키지 관리
@@ -72,6 +74,7 @@
 
 - **로컬 개발**: http://localhost:3000
 - **공개 테스트 URL**: https://3000-iwal8xk8gmflxvyhhxhol-2e1b9533.sandbox.novita.ai
+- **관리자 페이지**: https://3000-iwal8xk8gmflxvyhhxhol-2e1b9533.sandbox.novita.ai/admin
 - **프로덕션**: (Cloudflare Pages 배포 후)
 
 ## 기술 스택
