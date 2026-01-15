@@ -42,6 +42,27 @@ class KTasteRoute {
       });
     });
 
+    // Navigation links
+    document.querySelectorAll('.navbar-link').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const page = e.target.dataset.page || 'home';
+        this.loadPage(page);
+      });
+    });
+
+    // CTA button
+    document.querySelectorAll('.cta-button').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        this.loadPage('packages');
+        // Scroll to content
+        setTimeout(() => {
+          document.querySelector('#main-content')?.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      });
+    });
+
     // Mobile menu toggle
     const mobileToggle = document.querySelector('.mobile-menu-toggle');
     const navMenu = document.querySelector('.navbar-menu');

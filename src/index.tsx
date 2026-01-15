@@ -393,6 +393,56 @@ app.get('/api/admin/bookings', async (c) => {
   }
 })
 
+// Admin page (separate route)
+app.get('/admin', (c) => {
+  return c.html(`
+    <!DOCTYPE html>
+    <html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>관리자 페이지 - K-Taste Route</title>
+        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        <link href="/static/styles.css" rel="stylesheet">
+    </head>
+    <body>
+        <nav class="navbar">
+            <div class="navbar-container">
+                <a href="/" class="navbar-logo">LOCAL TABLE KOREA - 관리자</a>
+            </div>
+        </nav>
+
+        <div class="admin-container">
+            <div class="admin-header">
+                <h1>관리자 대시보드</h1>
+                <p style="color: var(--text-secondary);">맛집, 후기, 패키지, 예약을 관리하세요.</p>
+            </div>
+
+            <div class="admin-tabs">
+                <button class="admin-tab active" data-tab="restaurants">맛집 관리</button>
+                <button class="admin-tab" data-tab="reviews">후기 관리</button>
+                <button class="admin-tab" data-tab="packages">패키지 관리</button>
+                <button class="admin-tab" data-tab="bookings">예약 관리</button>
+            </div>
+
+            <div id="admin-content">
+                <div class="loading">
+                    <div class="spinner"></div>
+                    <p>Loading...</p>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/axios@1.6.0/dist/axios.min.js"></script>
+        <script src="/static/admin.js"></script>
+    </body>
+    </html>
+  `)
+})
+
 // Home page with beautiful HTML
 app.get('/', (c) => {
   return c.html(`
@@ -423,10 +473,9 @@ app.get('/', (c) => {
                 </button>
                 
                 <ul class="navbar-menu">
-                    <li><a href="#home" class="navbar-link" data-i18n="nav.home">홈</a></li>
-                    <li><a href="#regions" class="navbar-link" data-i18n="nav.regions">지역별 맛집</a></li>
-                    <li><a href="#packages" class="navbar-link" data-i18n="nav.packages">미식 투어</a></li>
-                    <li><a href="#admin" class="navbar-link" data-i18n="nav.admin">관리자</a></li>
+                    <li><a href="/" class="navbar-link" data-i18n="nav.home">홈</a></li>
+                    <li><a href="/" class="navbar-link" data-page="regions" data-i18n="nav.regions">지역별 맛집</a></li>
+                    <li><a href="/" class="navbar-link" data-page="packages" data-i18n="nav.packages">미식 투어</a></li>
                     
                     <div class="lang-selector">
                         <button class="lang-btn active" data-lang="ko">한국어</button>
