@@ -37,30 +37,41 @@ class KTasteRoute {
     // Language selector
     document.querySelectorAll('.lang-btn').forEach(btn => {
       btn.addEventListener('click', (e) => {
+        e.preventDefault();
         const lang = e.target.dataset.lang;
         this.updateLanguage(lang);
       });
     });
 
-    // Navigation links
-    document.querySelectorAll('.navbar-link').forEach(link => {
-      link.addEventListener('click', (e) => {
+    // Navigation links - delegate to handle dynamic content
+    document.addEventListener('click', (e) => {
+      const link = e.target.closest('.navbar-link');
+      if (link) {
         e.preventDefault();
-        const page = e.target.dataset.page || 'home';
+        const page = link.dataset.page || 'home';
+        console.log('Navigation clicked:', page);
         this.loadPage(page);
-      });
+        
+        // Close mobile menu if open
+        const navMenu = document.querySelector('.navbar-menu');
+        if (navMenu && navMenu.classList.contains('active')) {
+          navMenu.classList.remove('active');
+        }
+      }
     });
 
-    // CTA button
-    document.querySelectorAll('.cta-button').forEach(btn => {
-      btn.addEventListener('click', (e) => {
+    // CTA button - delegate to handle dynamic content
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('.cta-button');
+      if (btn) {
         e.preventDefault();
+        console.log('CTA button clicked');
         this.loadPage('packages');
         // Scroll to content
         setTimeout(() => {
           document.querySelector('#main-content')?.scrollIntoView({ behavior: 'smooth' });
-        }, 100);
-      });
+        }, 300);
+      }
     });
 
     // Mobile menu toggle
@@ -75,10 +86,12 @@ class KTasteRoute {
     // Smooth scroll for navbar
     window.addEventListener('scroll', () => {
       const navbar = document.querySelector('.navbar');
-      if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
-      } else {
-        navbar.classList.remove('scrolled');
+      if (navbar) {
+        if (window.scrollY > 50) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
       }
     });
   }
