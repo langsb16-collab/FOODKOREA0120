@@ -71,6 +71,7 @@
 ## URLs
 
 - **로컬 개발**: http://localhost:3000
+- **공개 테스트 URL**: https://3000-iwal8xk8gmflxvyhhxhol-2e1b9533.sandbox.novita.ai
 - **프로덕션**: (Cloudflare Pages 배포 후)
 
 ## 기술 스택
@@ -87,20 +88,24 @@
 ### 로컬 개발
 
 ```bash
-# 데이터베이스 마이그레이션
-npm run db:migrate:local
-
-# 샘플 데이터 시드
-npm run db:seed
-
 # 프로젝트 빌드
 npm run build
 
 # 개발 서버 시작 (PM2)
 pm2 start ecosystem.config.cjs
 
+# 데이터베이스 초기화 (첫 실행 시)
+curl -X POST http://localhost:3000/api/init-db
+
 # 테스트
-npm test
+curl http://localhost:3000
+curl http://localhost:3000/api/restaurants/featured
+
+# 서버 재시작
+pm2 restart k-taste-route
+
+# 로그 확인
+pm2 logs k-taste-route --nostream
 ```
 
 ### 배포
@@ -130,8 +135,30 @@ npm run db:migrate:prod
 ## 배포 상태
 
 - **플랫폼**: Cloudflare Pages
-- **상태**: ✅ 로컬 개발 완료 / ⏳ 프로덕션 배포 대기
+- **로컬 개발**: ✅ 완료 및 테스트 성공
+- **공개 URL**: ✅ 사용 가능 (Sandbox)
+- **프로덕션 배포**: ⏳ 대기 (Cloudflare API 키 필요)
 - **최종 업데이트**: 2026-01-15
+
+## 주요 API 엔드포인트
+
+### 공개 API
+
+- `GET /api/translations` - 다국어 번역 데이터
+- `GET /api/restaurants/featured` - 추천 맛집 (지자체 인증)
+- `GET /api/restaurants?region=수도권&lang=en` - 맛집 검색
+- `GET /api/restaurants/:id` - 맛집 상세
+- `GET /api/packages?lang=ja` - 여행 패키지 목록
+- `GET /api/packages/:id` - 패키지 상세
+- `POST /api/bookings` - 예약 생성
+
+### 관리자 API
+
+- `POST /api/init-db` - 데이터베이스 초기화 (개발용)
+- `GET /api/admin/restaurants` - 전체 맛집 관리
+- `GET /api/admin/reviews` - 후기 관리
+- `GET /api/admin/packages` - 패키지 관리
+- `GET /api/admin/bookings` - 예약 관리
 
 ## 문의
 
