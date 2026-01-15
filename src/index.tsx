@@ -288,12 +288,28 @@ app.get('/api/packages/:id', async (c) => {
   }
 })
 
-// Create booking
+// Create booking (form submission)
 app.post('/api/bookings', async (c) => {
   const { DB } = c.env
 
   try {
-    const body = await c.req.json()
+    const formData = await c.req.formData()
+    
+    const package_id = formData.get('package_id')
+    const customer_name = formData.get('customer_name')
+    const customer_email = formData.get('customer_email')
+    const customer_phone = formData.get('customer_phone')
+    const customer_country = formData.get('customer_country')
+    const travel_date = formData.get('travel_date')
+    const num_people = parseInt(formData.get('num_people') as string)
+    const package_type = formData.get('package_type')
+    const special_requests = formData.get('special_requests')
+
+    // Calculate total price based on package type and num_people
+    let basePrice = 1100 // Default to standard
+    if (package_type === '저가형') basePrice = 700
+    else if (package_type === '고급형') basePrice = 1800
+    const total_price = basePrice * num_people
     
     const { results } = await DB.prepare(`
       INSERT INTO bookings (
@@ -302,22 +318,23 @@ app.post('/api/bookings', async (c) => {
         total_price, special_requests
       ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     `).bind(
-      body.package_id,
-      body.customer_name,
-      body.customer_email,
-      body.customer_phone || null,
-      body.customer_country || null,
-      body.travel_date,
-      body.num_people,
-      body.package_type,
-      body.total_price,
-      body.special_requests || null
+      package_id,
+      customer_name,
+      customer_email,
+      customer_phone || null,
+      customer_country || null,
+      travel_date,
+      num_people,
+      package_type,
+      total_price,
+      special_requests || null
     ).run()
 
-    return c.json({ success: true, id: results[0]?.id })
+    // Redirect to success page
+    return c.redirect('/reserve/success')
   } catch (error) {
     console.error('Booking error:', error)
-    return c.json({ error: 'Failed to create booking' }, 500)
+    return c.redirect('/reserve/error')
   }
 })
 
@@ -393,6 +410,63 @@ app.get('/api/admin/bookings', async (c) => {
   }
 })
 
+// Reservation success page
+app.get('/reserve/success', (c) => {
+  return c.html(`
+    <!DOCTYPE html>
+    <html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>예약 완료 - K-Taste Route</title>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        <link href="/static/styles.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container" style="max-width: 600px; padding: 8rem 2rem; text-align: center;">
+            <div style="font-size: 4rem; margin-bottom: 2rem;">✅</div>
+            <h1 style="margin-bottom: 1rem; color: var(--accent);">예약이 완료되었습니다!</h1>
+            <p style="color: var(--text-secondary); margin-bottom: 2rem; line-height: 1.8;">
+                예약 신청이 성공적으로 접수되었습니다.<br>
+                입력하신 이메일로 확인 메일이 발송됩니다.<br>
+                영업일 기준 1~2일 내로 연락드리겠습니다.
+            </p>
+            <a href="/" class="btn btn-primary">홈으로 돌아가기</a>
+        </div>
+    </body>
+    </html>
+  `)
+})
+
+// Reservation error page
+app.get('/reserve/error', (c) => {
+  return c.html(`
+    <!DOCTYPE html>
+    <html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>예약 실패 - K-Taste Route</title>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        <link href="/static/styles.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container" style="max-width: 600px; padding: 8rem 2rem; text-align: center;">
+            <div style="font-size: 4rem; margin-bottom: 2rem;">❌</div>
+            <h1 style="margin-bottom: 1rem; color: red;">예약 처리 중 오류가 발생했습니다</h1>
+            <p style="color: var(--text-secondary); margin-bottom: 2rem; line-height: 1.8;">
+                죄송합니다. 예약 처리 중 문제가 발생했습니다.<br>
+                다시 시도해 주시거나, 이메일로 직접 문의해 주세요.<br>
+                <a href="mailto:contact@k-taste-route.com" style="color: var(--accent);">contact@k-taste-route.com</a>
+            </p>
+            <a href="/reserve" class="btn btn-primary">다시 시도하기</a>
+            <a href="/" class="btn btn-secondary" style="margin-left: 1rem;">홈으로 돌아가기</a>
+        </div>
+    </body>
+    </html>
+  `)
+})
+
 // Admin page (separate route)
 app.get('/admin', (c) => {
   return c.html(`
@@ -438,6 +512,167 @@ app.get('/admin', (c) => {
 
         <script src="https://cdn.jsdelivr.net/npm/axios@1.6.0/dist/axios.min.js"></script>
         <script src="/static/admin.js"></script>
+    </body>
+    </html>
+  `)
+})
+
+// Reservation page (separate route - NO JS except image preview)
+app.get('/reserve', async (c) => {
+  const { DB } = c.env
+  const packageId = c.req.query('id')
+
+  // Get package info
+  let packageInfo = null
+  if (packageId) {
+    try {
+      const { results } = await DB.prepare('SELECT * FROM packages WHERE id = ?').bind(packageId).all()
+      if (results.length > 0) {
+        packageInfo = results[0]
+      }
+    } catch (error) {
+      console.error('Failed to fetch package:', error)
+    }
+  }
+
+  return c.html(`
+    <!DOCTYPE html>
+    <html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>예약하기 - K-Taste Route</title>
+        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        <link href="/static/styles.css" rel="stylesheet">
+    </head>
+    <body>
+        <nav class="navbar">
+            <div class="navbar-container">
+                <a href="/" class="navbar-logo">LOCAL TABLE KOREA</a>
+            </div>
+        </nav>
+
+        <div class="container" style="max-width: 800px; padding: 8rem 2rem 4rem;">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <h1 style="margin-bottom: 1rem;">미식 투어 예약</h1>
+                <p style="color: var(--text-secondary);">아래 양식을 작성하여 예약을 신청하세요.</p>
+            </div>
+
+            ${packageInfo ? `
+              <div class="card" style="margin-bottom: 3rem; background: var(--bg-gray);">
+                <div class="card-content">
+                  <h3 style="margin-bottom: 0.5rem;">${packageInfo.title_ko}</h3>
+                  <p style="color: var(--text-secondary); margin-bottom: 1rem;">${packageInfo.duration}</p>
+                  <div style="display: flex; gap: 2rem;">
+                    <div>
+                      <span style="font-size: 0.875rem; color: var(--text-secondary);">저가형</span>
+                      <strong style="display: block; color: var(--accent); font-size: 1.25rem;">$${packageInfo.price_budget}</strong>
+                    </div>
+                    <div>
+                      <span style="font-size: 0.875rem; color: var(--text-secondary);">스탠다드</span>
+                      <strong style="display: block; color: var(--accent); font-size: 1.25rem;">$${packageInfo.price_standard}</strong>
+                    </div>
+                    <div>
+                      <span style="font-size: 0.875rem; color: var(--text-secondary);">고급형</span>
+                      <strong style="display: block; color: var(--accent); font-size: 1.25rem;">$${packageInfo.price_premium}</strong>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ` : ''}
+
+            <form action="/api/bookings" method="post" enctype="multipart/form-data" class="card">
+                <div class="card-content">
+                    <input type="hidden" name="package_id" value="${packageId || ''}">
+
+                    <div class="form-group">
+                        <label class="form-label">이름 (Name) *</label>
+                        <input type="text" name="customer_name" class="form-input" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">이메일 (Email) *</label>
+                        <input type="email" name="customer_email" class="form-input" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">전화번호 (Phone)</label>
+                        <input type="tel" name="customer_phone" class="form-input" placeholder="+82-10-1234-5678">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">국가 (Country) *</label>
+                        <select name="customer_country" class="form-select" required>
+                            <option value="">선택하세요 / Select</option>
+                            <option value="JP">🇯🇵 Japan (일본)</option>
+                            <option value="CN">🇨🇳 China (중국)</option>
+                            <option value="TW">🇹🇼 Taiwan (대만)</option>
+                            <option value="TH">🇹🇭 Thailand (태국)</option>
+                            <option value="US">🇺🇸 United States</option>
+                            <option value="OTHER">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">여행 시작일 (Travel Date) *</label>
+                        <input type="date" name="travel_date" class="form-input" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">인원 수 (Number of People) *</label>
+                        <input type="number" name="num_people" class="form-input" min="1" max="12" value="2" required>
+                        <small style="color: var(--text-secondary);">최소 1명, 최대 12명</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">패키지 타입 (Package Type) *</label>
+                        <select name="package_type" class="form-select" required>
+                            <option value="">선택하세요 / Select</option>
+                            <option value="저가형">저가형 (Budget)</option>
+                            <option value="스탠다드">스탠다드 (Standard)</option>
+                            <option value="고급형">고급형 (Premium)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">특별 요청사항 (Special Requests)</label>
+                        <textarea name="special_requests" class="form-textarea" rows="4" placeholder="음식 알레르기, 특별한 요구사항 등을 입력하세요."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">여권 사진 업로드 (Passport Photo - Optional)</label>
+                        <input type="file" accept="image/*" onchange="previewImage(this)" class="form-input">
+                        <img id="preview" style="max-width: 300px; margin-top: 1rem; display: none; border-radius: 8px; border: 2px solid var(--border);">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1rem; font-size: 1.125rem;">
+                        예약 신청하기 (Submit Reservation)
+                    </button>
+                </div>
+            </form>
+
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="/" style="color: var(--accent); text-decoration: none;">← 돌아가기 (Go Back)</a>
+            </div>
+        </div>
+
+        <!-- Minimal JS for image preview ONLY -->
+        <script>
+        function previewImage(input) {
+          if (input.files && input.files[0]) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+              const preview = document.getElementById('preview');
+              preview.src = e.target.result;
+              preview.style.display = 'block';
+            };
+            reader.readAsDataURL(input.files[0]);
+          }
+        }
+        </script>
     </body>
     </html>
   `)

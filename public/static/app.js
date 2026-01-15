@@ -437,7 +437,7 @@ class KTasteRoute {
 
     return `
       <div class="card">
-        <div class="card-image"></div>
+        <div class="card-image" loading="lazy"></div>
         <div class="card-content">
           <h3 class="card-title">${name}</h3>
           <p class="card-subtitle">${restaurant.cuisine_type || ''} · ${restaurant.city}</p>
@@ -479,7 +479,7 @@ class KTasteRoute {
               </div>
             </div>
           </div>
-          <button class="btn btn-primary" style="width: 100%; margin-top: 1rem;">${this.t('package.book')}</button>
+          <a href="/reserve?id=${pkg.id}" class="btn btn-primary" style="width: 100%; margin-top: 1rem; display: block; text-align: center; text-decoration: none;">${this.t('package.book')}</a>
         </div>
       </div>
     `;
