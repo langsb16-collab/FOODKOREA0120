@@ -338,6 +338,95 @@ app.post('/api/bookings', async (c) => {
   }
 })
 
+// Admin: Bulk upload restaurants via CSV
+app.post('/api/admin/restaurants/upload', async (c) => {
+  const { DB } = c.env
+
+  try {
+    const formData = await c.req.formData()
+    const csvFile = formData.get('csv_file')
+    
+    if (!csvFile) {
+      return c.json({ error: 'CSV file is required' }, 400)
+    }
+
+    // Parse CSV content (expecting format: restaurant_id,name_ko,name_en,name_ja,name_zh,name_th,region,sector,city,address,cuisine,avg_price,gov_certified,airport_priority,description,status)
+    const csvText = await csvFile.text()
+    const lines = csvText.split('\n').filter(line => line.trim())
+    
+    // Skip header line
+    const dataLines = lines.slice(1)
+    
+    let successCount = 0
+    let errorCount = 0
+    
+    for (const line of dataLines) {
+      try {
+        const fields = line.split(',').map(f => f.trim())
+        
+        if (fields.length < 16) continue
+        
+        const [
+          restaurant_id,
+          name_ko,
+          name_en,
+          name_ja,
+          name_zh,
+          name_th,
+          region,
+          sector,
+          city,
+          address,
+          cuisine_type,
+          avg_price,
+          gov_certified,
+          airport_priority,
+          description,
+          status
+        ] = fields
+        
+        await DB.prepare(`
+          INSERT INTO restaurants (
+            id, name_ko, name_en, name_ja, name_zh, name_th,
+            region, sector, city, address, cuisine_type, avg_price,
+            gov_certified, airport_priority, description_ko, status
+          ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        `).bind(
+          restaurant_id,
+          name_ko,
+          name_en,
+          name_ja,
+          name_zh,
+          name_th,
+          region,
+          sector,
+          city,
+          address,
+          cuisine_type,
+          parseInt(avg_price),
+          gov_certified === 'Y' ? 1 : 0,
+          airport_priority,
+          description,
+          status === 'ACTIVE' ? '운영' : status === 'HOLD' ? '휴업' : '폐업'
+        ).run()
+        
+        successCount++
+      } catch (error) {
+        console.error('Failed to insert row:', error)
+        errorCount++
+      }
+    }
+    
+    return c.json({ 
+      success: true, 
+      message: `Uploaded ${successCount} restaurants, ${errorCount} errors` 
+    })
+  } catch (error) {
+    console.error('CSV upload error:', error)
+    return c.json({ error: 'Failed to upload CSV' }, 500)
+  }
+})
+
 // Admin Routes
 
 // Get all restaurants (admin)
