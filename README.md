@@ -37,6 +37,13 @@
    - 고급스럽고 세련된 UI/UX
    - 프리미엄 골드 & 블랙 컬러 스킴
 
+6. **예약 시스템** ✅
+   - **별도 페이지로 분리** (/reserve)
+   - **JS 최소화** (이미지 미리보기만 사용)
+   - 브라우저 기본 validation
+   - 폼 제출 후 성공/실패 페이지
+   - 여권 사진 업로드 지원
+
 ### 🚧 권장 다음 단계
 
 1. **결제 시스템 통합** - Stripe API 연동
@@ -74,6 +81,7 @@
 
 - **로컬 개발**: http://localhost:3000
 - **공개 테스트 URL**: https://3000-iwal8xk8gmflxvyhhxhol-2e1b9533.sandbox.novita.ai
+- **예약 페이지**: https://3000-iwal8xk8gmflxvyhhxhol-2e1b9533.sandbox.novita.ai/reserve
 - **관리자 페이지**: https://3000-iwal8xk8gmflxvyhhxhol-2e1b9533.sandbox.novita.ai/admin
 - **프로덕션**: (Cloudflare Pages 배포 후)
 
@@ -153,7 +161,13 @@ npm run db:migrate:prod
 - `GET /api/restaurants/:id` - 맛집 상세
 - `GET /api/packages?lang=ja` - 여행 패키지 목록
 - `GET /api/packages/:id` - 패키지 상세
-- `POST /api/bookings` - 예약 생성
+
+### 예약 시스템
+
+- `GET /reserve?id=PACKAGE_ID` - 예약 페이지
+- `POST /api/bookings` - 예약 생성 (폼 제출)
+- `GET /reserve/success` - 예약 완료 페이지
+- `GET /reserve/error` - 예약 실패 페이지
 
 ### 관리자 API
 
