@@ -2165,14 +2165,14 @@ app.get('/', async (c) => {
             </div>
         </footer>
 
-        <!-- FAQ Chatbot -->
+        <!-- FAQ Chatbot (40 items) -->
         <div id="faq-chatbot" style="position: fixed; bottom: 24px; right: 24px; z-index: 1000;">
           <button id="faq-toggle-btn" style="width: 60px; height: 60px; border-radius: 50%; background: #E85C4A; border: none; box-shadow: 0 4px 12px rgba(232, 92, 74, 0.3); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 28px; color: white;">
             💬
           </button>
           <div id="faq-panel" style="display: none; position: absolute; bottom: 80px; right: 0; width: 360px; max-width: calc(100vw - 48px); height: 500px; background: white; border-radius: 16px; box-shadow: 0 8px 32px rgba(0,0,0,0.12); overflow: hidden; flex-direction: column;">
             <div style="background: #E85C4A; color: white; padding: 16px; display: flex; justify-content: space-between; align-items: center;">
-              <h3 style="margin: 0; font-size: 16px; font-weight: 600;">FAQ</h3>
+              <h3 style="margin: 0; font-size: 16px; font-weight: 600;">FAQ (40 Q&A)</h3>
               <button id="faq-close-btn" style="background: none; border: none; color: white; font-size: 24px; cursor: pointer; padding: 0; width: 32px; height: 32px;">×</button>
             </div>
             <div id="faq-list" style="flex: 1; overflow-y: auto; padding: 16px;">
