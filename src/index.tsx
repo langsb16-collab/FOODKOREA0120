@@ -2,6 +2,7 @@ import { Hono } from 'hono'
 import { cors } from 'hono/cors'
 import { serveStatic } from 'hono/cloudflare-workers'
 import { translations } from './i18n/translations'
+import { translations } from './i18n/translations'
 
 type Bindings = {
   DB: D1Database
@@ -1912,6 +1913,7 @@ app.get('/reserve', async (c) => {
 // Home page with beautiful HTML
 app.get('/', async (c) => {
   const { DB } = c.env
+  const lang = c.req.query('lang') || 'ko'
   
   // Fetch featured restaurants
   let restaurants = []
@@ -1940,6 +1942,9 @@ app.get('/', async (c) => {
   } catch (error) {
     console.error('Failed to fetch packages:', error)
   }
+  
+  // Get translations from i18n data
+  const i18n = translations[lang] || translations['ko']
   
   return c.html(`
     <!DOCTYPE html>
@@ -1970,21 +1975,21 @@ app.get('/', async (c) => {
                 </button>
                 
                 <ul class="navbar-menu">
-                    <li><a href="/" class="navbar-link" data-i18n="nav.home">홈</a></li>
+                    <li><a href="/" class="navbar-link">${i18n['nav.home']}</a></li>
                     <li><a href="/medical" class="navbar-link">K-Medical</a></li>
-                    <li><a href="/" class="navbar-link" data-page="regions" data-i18n="nav.regions">지역별 맛집</a></li>
-                    <li><a href="/" class="navbar-link" data-page="packages" data-i18n="nav.packages">미식 투어</a></li>
+                    <li><a href="/" class="navbar-link" data-page="regions">${i18n['nav.regions']}</a></li>
+                    <li><a href="/" class="navbar-link" data-page="packages">${i18n['nav.packages']}</a></li>
                     
                     <div class="lang-selector">
                         <button class="lang-selector-toggle">
-                            <span>한국어</span>
+                            <span>${lang === 'ko' ? '한국어' : lang === 'en' ? 'English' : lang === 'ja' ? '日本語' : lang === 'zh' ? '中文' : 'ไทย'}</span>
                         </button>
                         <div class="lang-dropdown">
-                            <button class="lang-btn active" data-lang="ko">한국어 (Korean)</button>
-                            <button class="lang-btn" data-lang="en">English</button>
-                            <button class="lang-btn" data-lang="ja">日本語 (Japanese)</button>
-                            <button class="lang-btn" data-lang="zh">中文 (Chinese)</button>
-                            <button class="lang-btn" data-lang="th">ไทย (Thai)</button>
+                            <button class="lang-btn ${lang === 'ko' ? 'active' : ''}" data-lang="ko">한국어 (Korean)</button>
+                            <button class="lang-btn ${lang === 'en' ? 'active' : ''}" data-lang="en">English</button>
+                            <button class="lang-btn ${lang === 'ja' ? 'active' : ''}" data-lang="ja">日本語 (Japanese)</button>
+                            <button class="lang-btn ${lang === 'zh' ? 'active' : ''}" data-lang="zh">中文 (Chinese)</button>
+                            <button class="lang-btn ${lang === 'th' ? 'active' : ''}" data-lang="th">ไทย (Thai)</button>
                         </div>
                     </div>
                 </ul>
@@ -1994,18 +1999,50 @@ app.get('/', async (c) => {
         <!-- Hero Section -->
         <section class="hero">
             <div class="hero-content">
-                <h1 class="hero-title" data-i18n="hero.title">LOCAL TABLE KOREA</h1>
-                <p class="hero-subtitle" data-i18n="hero.subtitle">숨은 진짜 맛을 찾아 떠나는 한국 미식 여행</p>
-                <p class="hero-description" data-i18n="hero.description">
-                    SNS 맛집이 아닌, 지자체 인증과 현지인이 추천하는 진짜 로컬 맛집을 만나보세요.
-                    100년 전통 노포부터 숨은 향토음식까지, 한국의 진정한 미식 문화를 경험하세요.
-                </p>
-                <a href="#packages" class="cta-button" data-i18n="hero.cta">미식 투어 시작하기</a>
+                <h1 class="hero-title">${i18n['hero.title']}</h1>
+                <p class="hero-subtitle">${i18n['hero.subtitle']}</p>
+                <p class="hero-description">${i18n['hero.description']}</p>
+                <a href="#packages" class="cta-button">${i18n['hero.cta']}</a>
             </div>
         </section>
 
         <!-- Main Content -->
         <main id="main-content">
+            <!-- Chatbot Widget -->
+            <div id="chatbot-widget">
+                <button id="chatbot-toggle" class="chatbot-toggle" aria-label="Open chatbot">
+                    💬
+                </button>
+                <div id="chatbot-panel" class="chatbot-panel" style="display: none;">
+                    <div class="chatbot-header">
+                        <h3>FAQ</h3>
+                        <button id="chatbot-close" aria-label="Close chatbot">✕</button>
+                    </div>
+                    <div class="chatbot-body">
+                        <div class="faq-item">
+                            <strong>Q1: K-Taste Route가 무엇인가요?</strong>
+                            <p>해외 관광객을 위한 한국 로컬 미식 여행 플랫폼입니다. 지자체 인증과 현지인이 추천하는 진짜 로컬 맛집을 소개합니다.</p>
+                        </div>
+                        <div class="faq-item">
+                            <strong>Q2: 어떤 언어를 지원하나요?</strong>
+                            <p>한국어, 영어, 일본어, 중국어, 태국어 5개 언어를 지원합니다.</p>
+                        </div>
+                        <div class="faq-item">
+                            <strong>Q3: 어떤 지역을 다루나요?</strong>
+                            <p>수도권, 강원도, 충청도, 전라도, 경상도, 제주도 등 한국 전역 6대 권역을 다룹니다.</p>
+                        </div>
+                        <div class="faq-item">
+                            <strong>Q4: 미식 투어 패키지는 무엇인가요?</strong>
+                            <p>3-5일간 한국의 로컬 맛집을 체계적으로 경험하는 여행 상품입니다. 가이드, 교통, 식사, 숙박이 포함되어 있습니다.</p>
+                        </div>
+                        <div class="faq-item">
+                            <strong>Q5: K-Medical Tourism은 무엇인가요?</strong>
+                            <p>경산시 기반 건강검진 및 한방 헬스 투어입니다. 1-3일 프로그램으로 서울보다 저렴하며 외국인 전용 패키지를 제공합니다.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Featured Restaurants Section -->
             <section class="section">
                 <div class="container">
@@ -2209,12 +2246,34 @@ app.get('/', async (c) => {
           // Language dropdown
           const langToggle = document.querySelector('.lang-selector-toggle');
           const langDropdown = document.querySelector('.lang-dropdown');
+          const langBtns = document.querySelectorAll('.lang-btn');
           
           if (langToggle && langDropdown) {
             langToggle.addEventListener('click', (e) => {
               e.stopPropagation();
               langToggle.classList.toggle('active');
               langDropdown.classList.toggle('active');
+            });
+            
+            langBtns.forEach(btn => {
+              btn.addEventListener('click', () => {
+                const lang = btn.dataset.lang;
+                const langNames = { ko: '한국어', en: 'English', ja: '日本語', zh: '中文', th: 'ไทย' };
+                
+                // Update active state
+                langBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                // Update toggle button text
+                langToggle.querySelector('span').textContent = langNames[lang];
+                
+                // Close dropdown
+                langToggle.classList.remove('active');
+                langDropdown.classList.remove('active');
+                
+                // Reload with language parameter
+                window.location.href = '/?lang=' + lang;
+              });
             });
             
             document.addEventListener('click', (e) => {
