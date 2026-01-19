@@ -1910,37 +1910,7 @@ app.get('/reserve', async (c) => {
 })
 
 // Home page with beautiful HTML
-app.get('/', async (c) => {
-  const { DB } = c.env
-  
-  // Fetch featured restaurants
-  let restaurants = []
-  try {
-    const { results } = await DB.prepare(`
-      SELECT * FROM restaurants 
-      WHERE status = '운영' AND gov_certified = 1 
-      ORDER BY local_score DESC 
-      LIMIT 3
-    `).all()
-    restaurants = results
-  } catch (error) {
-    console.error('Failed to fetch restaurants:', error)
-  }
-  
-  // Fetch packages
-  let packages = []
-  try {
-    const { results } = await DB.prepare(`
-      SELECT * FROM packages 
-      WHERE status = '판매중' 
-      ORDER BY created_at DESC 
-      LIMIT 2
-    `).all()
-    packages = results
-  } catch (error) {
-    console.error('Failed to fetch packages:', error)
-  }
-  
+app.get('/', (c) => {
   return c.html(`
     <!DOCTYPE html>
     <html lang="ko">
@@ -2006,80 +1976,10 @@ app.get('/', async (c) => {
 
         <!-- Main Content -->
         <main id="main-content">
-            <!-- Featured Restaurants Section -->
-            <section class="section">
-                <div class="container">
-                    <div class="section-header">
-                        <h2 class="section-title">추천 로컬 맛집</h2>
-                        <p class="section-subtitle">지자체 인증과 현지인이 추천하는 진짜 로컬 맛집을 만나보세요</p>
-                    </div>
-                    <div class="grid grid-3">
-                        ${restaurants.map(r => `
-                            <div class="card">
-                                <div class="card-image">
-                                    <img src="https://placehold.co/800x600/E85C4A/ffffff?text=${encodeURIComponent(r.name_ko)}" alt="${r.name_ko}">
-                                    ${r.gov_certified ? '<span class="badge badge-primary">지자체 인증</span>' : ''}
-                                </div>
-                                <div class="card-content">
-                                    <h3 class="card-title">${r.name_ko}</h3>
-                                    <div class="card-meta">
-                                        <span>📍 ${r.city}</span>
-                                        <span>💰 평균 ₩${r.avg_price.toLocaleString()}</span>
-                                        <span>⭐ ${r.local_score}/100</span>
-                                    </div>
-                                    <p class="card-description">${r.description_ko}</p>
-                                    <div class="card-tags">
-                                        <span class="badge">${r.region}</span>
-                                        <span class="badge">${r.sector}</span>
-                                    </div>
-                                </div>
-                            </div>
-                        `).join('')}
-                    </div>
-                </div>
-            </section>
-
-            <!-- Tour Packages Section -->
-            <section class="section section-dark" id="packages">
-                <div class="container">
-                    <div class="section-header">
-                        <h2 class="section-title">미식 투어 패키지</h2>
-                        <p class="section-subtitle">3-5일간 한국의 로컬 맛집을 체계적으로 경험하는 여행 상품</p>
-                    </div>
-                    <div class="grid grid-2">
-                        ${packages.map(p => `
-                            <div class="card">
-                                <div class="card-image">
-                                    <img src="https://placehold.co/1200x675/E85C4A/ffffff?text=${encodeURIComponent(p.title_ko)}" alt="${p.title_ko}">
-                                </div>
-                                <div class="card-content">
-                                    <h3 class="card-title">${p.title_ko}</h3>
-                                    <div class="card-meta">
-                                        <span>📅 ${p.duration}</span>
-                                        <span>👥 ${p.min_pax}-${p.max_pax}명</span>
-                                    </div>
-                                    <p class="card-description">${p.description_ko}</p>
-                                    <div class="price-grid">
-                                        <div class="price-item">
-                                            <span class="price-label">저가형</span>
-                                            <span class="price-value">$${p.price_budget}</span>
-                                        </div>
-                                        <div class="price-item">
-                                            <span class="price-label">스탠다드</span>
-                                            <span class="price-value">$${p.price_standard}</span>
-                                        </div>
-                                        <div class="price-item">
-                                            <span class="price-label">고급형</span>
-                                            <span class="price-value">$${p.price_premium}</span>
-                                        </div>
-                                    </div>
-                                    <a href="/reserve?package_id=${p.id}" class="button button-primary">예약하기</a>
-                                </div>
-                            </div>
-                        `).join('')}
-                    </div>
-                </div>
-            </section>
+            <div class="loading">
+                <div class="spinner"></div>
+                <p>Loading amazing local restaurants...</p>
+            </div>
         </main>
 
         <!-- Footer -->
