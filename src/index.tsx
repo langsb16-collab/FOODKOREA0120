@@ -2177,12 +2177,13 @@ app.get('/', async (c) => {
             </div>
             <div id="faq-list" style="flex: 1; overflow-y: auto; padding: 16px;">
               ${lang === 'ko' ? `
+
                 <div class="faq-item" style="margin-bottom: 16px;">
                   <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
                     Q1: K-Taste Route가 무엇인가요?
                   </button>
                   <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
-                    K-Taste Route (LOCAL TABLE KOREA)는 해외 관광객을 위한 한국 로컬 미식 여행 플랫폼입니다. SNS 맛집이 아닌, 지자체 인증과 현지인이 추천하는 진짜 로컬 맛집을 소개합니다.
+                    해외 관광객을 위한 한국 로컬 미식 여행 플랫폼입니다. SNS 맛집이 아닌 지자체 인증과 현지인이 추천하는 로컬 맛집을 소개합니다.
                   </div>
                 </div>
                 <div class="faq-item" style="margin-bottom: 16px;">
@@ -2190,7 +2191,7 @@ app.get('/', async (c) => {
                     Q2: 어떤 언어를 지원하나요?
                   </button>
                   <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
-                    한국어, 영어, 일본어, 중국어, 태국어 5개 언어를 지원합니다. 우측 상단 언어 드롭다운에서 실시간 전환 가능합니다.
+                    한국어, 영어, 일본어, 중국어, 태국어 (5개 언어)를 지원하며 우측 상단 드롭다운에서 언어를 전환할 수 있습니다.
                   </div>
                 </div>
                 <div class="faq-item" style="margin-bottom: 16px;">
@@ -2217,13 +2218,295 @@ app.get('/', async (c) => {
                     패키지 선택 → 예약 양식 작성 → 제출(선결제 없음) → 1-2일 내 담당자 연락 → 상세 조율 후 결제
                   </div>
                 </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q6: 다른 맛집 플랫폼과 차이점은?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    SNS 인플루언서 맛집이 아닌 지자체 인증+현지인 추천 기반. 공항 중심 동선과 외국인 친화적 가격정보 제공.
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q7: 6개 섹터란 무엇인가요?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    공항 접근형, KTX 접근형, 전통시장, 노포(20년+), 향토음식, 산/바다 특화 맛집을 구분합니다.
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q8: 지자체 인증이란?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    지방자치단체가 위생, 맛, 서비스, 전통성을 종합 평가해 인증한 맛집입니다. 맛집 카드에 ✓ 마크로 표시됩니다.
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q9: Local Score는 무엇인가요?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    현지인 추천도를 1-100점으로 평가합니다. 90점 이상은 강력 추천, 70-89점은 단골집입니다.
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q10: 맛집은 총 몇 개인가요?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    6개 권역 × 6개 섹터 × 최소 100개 맛집 = 3,600+ 목표입니다.
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q11: 공항 중심 동선이란?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    인천공항, 김포공항, 김해공항, 제주공항 등 공항 기준으로 30분 이내 접근 가능한 맛집을 우선 표시합니다.
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q12: 패키지에 무엇이 포함되나요?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    3-5일 테마 투어, 전문 가이드, 교통편, 식사(맛집 투어), 숙박, 외국인 맞춤 서비스가 포함됩니다.
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q13: 저가형 패키지 특징은?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    게스트하우스 숙박, 대중교통 이용, 8-10명 그룹, 하루 2-3개 맛집 방문, 기본 가이드 포함.
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q14: 스탠다드 패키지 특징은?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    4성급 호텔, 전용 차량, 6-8명 그룹, 하루 3-4개 맛집, 전문 가이드+통역 포함.
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q15: 고급형 패키지 특징은?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    5성급 호텔, 전담 가이드+통역, 4-6명 소그룹, 하루 4-5개 맛집, VIP 예약 서비스 포함.
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q16: 예약 후 취소 정책은?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    7일 전까지 무료 취소, 3-7일 전 50% 환불, 3일 이내 환불 불가입니다.
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q17: 결제 시스템은?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    현재는 예약 후 담당자 연락 → 상세 조율 → 결제 방식입니다. 향후 Stripe 연동 예정입니다.
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q18: 관리자 페이지 기능은?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    맛집 관리, 후기 관리, 패키지 관리, 예약 관리 4개 탭으로 구성되어 있습니다.
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q19: CSV 대량 업로드는?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    관리자 페이지에서 150개 단위로 맛집 데이터를 CSV로 업로드할 수 있으며, 5개 언어 동시 입력 가능합니다.
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q20: 다국어 전환 방법은?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    우측 상단 언어 드롭다운(KO/EN/JA/ZH/TH)을 클릭하면 즉시 전체 페이지 언어가 전환됩니다.
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q21: API는 제공하나요?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    네. 레스토랑, 패키지, 예약, 번역, 건강 패키지 API를 RESTful 방식으로 제공합니다.
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q22: 데이터베이스는 무엇을 사용하나요?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    Cloudflare D1(엣지 분산 SQLite)를 사용합니다. 무료 플랜: 10만 read/5만 write/day.
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q23: 디자인 컨셉은?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    Eatwith 스타일의 화이트 배경 중심, 여백 강조, 미니멀한 카드 기반 디자인입니다.
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q24: 반응형 기준은?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    Mobile <768px, Tablet 768-1199px, Desktop ≥1200px. 모바일 우선 설계입니다.
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q25: 여행사 제휴는?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    파트너 페이지에서 신청 가능하며, 예약 API 제공. 수수료는 15-25%입니다.
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q26: 지자체 협력은?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    지자체가 맛집 DB 제공, 공동 브랜딩, 통계 리포트를 받습니다.
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q27: API 통합 문의는?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    api@k-taste-route.com으로 문의하세요. API 문서와 샘플 코드를 제공합니다.
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q28: 맛집 등록은 어떻게 하나요?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    지자체는 CSV 일괄 등록, 개별 맛집은 restaurant-apply@k-taste-route.com으로 신청합니다.
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q29: K-Medical Tourism은?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    경산시 기반 건강검진 및 한방 헬스 투어입니다. 1-3일 프로그램, 외국인 전용 패키지 제공.
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q30: K-Medical 가격은?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    서울 대비 30-40% 저렴합니다. 기본 검진 패키지는 $500-1,200입니다.
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q31: 건강검진 후 연계는?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    검진 결과에 따라 한방 치료(침, 한약, 마사지) 프로그램과 연계됩니다.
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q32: 국가별 맞춤 검진이란?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    국가별로 관심 높은 검진 항목(위암, 간암, 유방암 등)을 중심으로 패키지를 구성합니다.
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q33: 예약 테스트는 어디서?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    https://3000-iwal8xk8gmflxvyhhxhol-2e1b9533.sandbox.novita.ai/reserve 에서 테스트 가능합니다.
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q34: 관리자 테스트는?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    https://3000-iwal8xk8gmflxvyhhxhol-2e1b9533.sandbox.novita.ai/admin 에서 테스트 가능합니다.
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q35: K-Medical 페이지는?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    https://3000-iwal8xk8gmflxvyhhxhol-2e1b9533.sandbox.novita.ai/medical 에서 확인 가능합니다.
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q36: 문의 이메일은?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    contact@k-taste-route.com (일반), medical@k-taste-route.com (의료), partners@k-taste-route.com (제휴)
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q37: 정부 협력 문의는?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    gov@k-taste-route.com으로 지자체 협력 및 데이터 제공 문의를 하세요.
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q38: 배포 플랫폼은?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    Cloudflare Pages에 배포되며 전 세계 엣지 네트워크에서 빠르게 서비스됩니다.
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q39: 개발 기술 스택은?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    Hono (백엔드), TypeScript, Cloudflare Workers, D1 Database, Tailwind CSS (프론트엔드)
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q40: 마지막 업데이트는?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    2026-01-19. 최신 기능과 40개 FAQ가 추가되었습니다.
+                  </div>
+                </div>
+
               ` : lang === 'en' ? `
+
                 <div class="faq-item" style="margin-bottom: 16px;">
                   <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
                     Q1: What is K-Taste Route?
                   </button>
                   <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
-                    K-Taste Route is a local Korean cuisine travel platform for international tourists. We introduce authentic restaurants certified by local governments.
+                    A local Korean cuisine travel platform for international tourists. We introduce authentic restaurants certified by local governments.
                   </div>
                 </div>
                 <div class="faq-item" style="margin-bottom: 16px;">
@@ -2258,7 +2541,289 @@ app.get('/', async (c) => {
                     Select package → Fill form → Submit (no prepayment) → Staff contact within 1-2 days → Finalize and pay
                   </div>
                 </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q6: What makes you different?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    We focus on government-certified and local-recommended restaurants, not social media influencers. Airport-centric routes.
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q7: What are the 6 sectors?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    Airport accessible, KTX accessible, Traditional markets, Legacy restaurants (20+ years), Regional cuisine, Mountain/Sea specialty.
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q8: What is government certification?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    Local governments certify restaurants based on hygiene, taste, service, and tradition. Marked with ✓ on cards.
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q9: What is Local Score?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    Local recommendation score (1-100). 90+: Highly recommended, 70-89: Regular favorite.
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q10: How many restaurants?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    Target: 6 regions × 6 sectors × 100+ restaurants = 3,600+ restaurants.
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q11: Airport-centric routes?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    Restaurants within 30 minutes from major airports (Incheon, Gimpo, Gimhae, Jeju) are prioritized.
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q12: What's included in packages?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    3-5 day themed tours, professional guide, transportation, meals (restaurant tours), accommodation, foreigner-friendly services.
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q13: Budget package features?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    Guesthouse, public transport, 8-10 people group, 2-3 restaurants/day, basic guide.
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q14: Standard package features?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    4-star hotel, private vehicle, 6-8 people, 3-4 restaurants/day, professional guide + interpreter.
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q15: Premium package features?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    5-star hotel, dedicated guide + interpreter, 4-6 people, 4-5 restaurants/day, VIP reservation service.
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q16: Cancellation policy?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    Free cancel 7+ days before, 50% refund 3-7 days, no refund within 3 days.
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q17: Payment system?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    Currently: booking → staff contact → finalize → payment. Future: Stripe integration planned.
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q18: Admin page features?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    4 tabs: Restaurant management, Review management, Package management, Booking management.
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q19: CSV bulk upload?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    Upload up to 150 restaurants at once via admin page. Supports 5 languages simultaneously.
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q20: How to switch languages?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    Click the language dropdown (KO/EN/JA/ZH/TH) at top-right. The entire page switches instantly.
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q21: Do you provide APIs?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    Yes. RESTful APIs for restaurants, packages, bookings, translations, and health packages.
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q22: What database do you use?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    Cloudflare D1 (edge-distributed SQLite). Free tier: 100K reads/50K writes per day.
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q23: Design concept?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    Eatwith-style design with white background, emphasized spacing, minimal card-based layout.
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q24: Responsive breakpoints?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    Mobile <768px, Tablet 768-1199px, Desktop ≥1200px. Mobile-first design.
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q25: Travel agency partnerships?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    Apply via partners page. Booking API provided. Commission: 15-25%.
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q26: Government cooperation?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    Local governments provide restaurant DB, co-branding, and receive statistical reports.
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q27: API integration inquiry?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    Contact api@k-taste-route.com. API docs and sample code provided.
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q28: How to register restaurants?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    Governments: CSV bulk upload. Individual restaurants: apply at restaurant-apply@k-taste-route.com.
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q29: What is K-Medical Tourism?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    Gyeongsan-based health checkup and oriental medicine wellness tours. 1-3 day programs for foreigners.
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q30: K-Medical pricing?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    30-40% cheaper than Seoul. Basic checkup packages: $500-1,200.
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q31: Post-checkup integration?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    Based on results, integrated with oriental medicine treatments (acupuncture, herbal medicine, massage).
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q32: Country-specific checkups?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    Packages tailored to country-specific health concerns (stomach, liver, breast cancer screenings, etc.).
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q33: Where to test booking?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    Test at: https://3000-iwal8xk8gmflxvyhhxhol-2e1b9533.sandbox.novita.ai/reserve
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q34: Where to test admin?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    Test at: https://3000-iwal8xk8gmflxvyhhxhol-2e1b9533.sandbox.novita.ai/admin
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q35: K-Medical page?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    View at: https://3000-iwal8xk8gmflxvyhhxhol-2e1b9533.sandbox.novita.ai/medical
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q36: Contact emails?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    contact@k-taste-route.com (general), medical@k-taste-route.com (medical), partners@k-taste-route.com (partnership)
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q37: Government cooperation inquiry?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    Contact gov@k-taste-route.com for local government cooperation and data provision.
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q38: Deployment platform?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    Deployed on Cloudflare Pages, served globally via edge network.
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q39: Tech stack?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    Hono (backend), TypeScript, Cloudflare Workers, D1 Database, Tailwind CSS (frontend)
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q40: Last update?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    2026-01-19. Latest features and 40 FAQs added.
+                  </div>
+                </div>
+
               ` : lang === 'ja' ? `
+
                 <div class="faq-item" style="margin-bottom: 16px;">
                   <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
                     Q1: K-Taste Routeとは？
@@ -2299,7 +2864,289 @@ app.get('/', async (c) => {
                     パッケージ選択 → フォーム記入 → 送信(前払い不要) → 1-2日以内に担当者連絡 → 詳細調整後決済
                   </div>
                 </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q6: 他のプラットフォームとの違いは？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    SNSインフルエンサーではなく自治体認証+地元推薦を重視。空港中心の動線と外国人向け価格情報を提供。
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q7: 6つのセクターとは？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    空港アクセス型、KTXアクセス型、伝統市場、老舗(20年+)、郷土料理、山/海特化レストランを分類。
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q8: 自治体認証とは？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    地方自治体が衛生、味、サービス、伝統性を総合評価して認証したレストラン。カードに✓マーク表示。
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q9: Local Scoreとは？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    地元推薦度を1-100点で評価。90点以上は強力推薦、70-89点は常連店。
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q10: レストラン総数は？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    目標: 6圏域 × 6セクター × 100+店舗 = 3,600+レストラン。
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q11: 空港中心動線とは？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    仁川空港、金浦空港、金海空港、済州空港から30分以内アクセス可能なレストランを優先表示。
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q12: パッケージ内容は？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    3-5日テーマツアー、専門ガイド、交通手段、食事(レストランツアー)、宿泊、外国人向けサービス。
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q13: エコノミーパッケージは？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    ゲストハウス、公共交通、8-10名グループ、1日2-3店舗、基本ガイド。
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q14: スタンダードパッケージは？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    4つ星ホテル、専用車両、6-8名、1日3-4店舗、専門ガイド+通訳。
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q15: プレミアムパッケージは？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    5つ星ホテル、専属ガイド+通訳、4-6名、1日4-5店舗、VIP予約サービス。
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q16: キャンセルポリシーは？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    7日前まで無料キャンセル、3-7日前50%返金、3日以内返金不可。
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q17: 決済システムは？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    現在: 予約 → 担当者連絡 → 詳細確定 → 決済。将来: Stripe連携予定。
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q18: 管理者ページ機能は？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    4つのタブ: レストラン管理、レビュー管理、パッケージ管理、予約管理。
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q19: CSV一括アップロードは？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    管理者ページから150店舗まで一括アップロード可能。5言語同時入力対応。
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q20: 言語切り替え方法は？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    右上の言語ドロップダウン(KO/EN/JA/ZH/TH)をクリックでページ全体が即座に切り替わります。
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q21: APIは提供していますか？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    はい。レストラン、パッケージ、予約、翻訳、健康パッケージのRESTful APIを提供。
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q22: 使用データベースは？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    Cloudflare D1(エッジ分散SQLite)。無料プラン: 10万read/5万write/日。
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q23: デザインコンセプトは？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    Eatwithスタイルのホワイト背景、余白強調、ミニマルなカードベースデザイン。
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q24: レスポンシブ基準は？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    Mobile <768px、Tablet 768-1199px、Desktop ≥1200px。モバイルファースト設計。
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q25: 旅行会社提携は？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    パートナーページから申請可能。予約API提供。手数料: 15-25%。
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q26: 自治体協力は？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    自治体がレストランDB提供、共同ブランディング、統計レポート受領。
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q27: API統合お問い合わせは？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    api@k-taste-route.comまでご連絡ください。APIドキュメントとサンプルコード提供。
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q28: レストラン登録方法は？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    自治体: CSV一括登録。個別店舗: restaurant-apply@k-taste-route.comへ申請。
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q29: K-Medical Tourismとは？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    慶山市ベースの健康検診および韓方ウェルネスツアー。1-3日プログラム、外国人専用パッケージ。
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q30: K-Medical料金は？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    ソウル比30-40%安価。基本検診パッケージ: $500-1,200。
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q31: 検診後の連携は？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    検診結果に基づき韓方治療(鍼、韓方薬、マッサージ)プログラムと連携。
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q32: 国別カスタム検診とは？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    国別に関心の高い検診項目(胃がん、肝がん、乳がん等)中心にパッケージ構成。
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q33: 予約テストは？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    https://3000-iwal8xk8gmflxvyhhxhol-2e1b9533.sandbox.novita.ai/reserve でテスト可能。
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q34: 管理者テストは？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    https://3000-iwal8xk8gmflxvyhhxhol-2e1b9533.sandbox.novita.ai/admin でテスト可能。
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q35: K-Medicalページは？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    https://3000-iwal8xk8gmflxvyhhxhol-2e1b9533.sandbox.novita.ai/medical で確認可能。
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q36: お問い合わせメールは？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    contact@k-taste-route.com (一般)、medical@k-taste-route.com (医療)、partners@k-taste-route.com (提携)
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q37: 政府協力お問い合わせは？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    gov@k-taste-route.comまで自治体協力およびデータ提供についてお問い合わせください。
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q38: デプロイプラットフォームは？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    Cloudflare Pagesにデプロイ、グローバルエッジネットワークで高速配信。
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q39: 技術スタックは？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    Hono (バックエンド)、TypeScript、Cloudflare Workers、D1 Database、Tailwind CSS (フロントエンド)
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q40: 最終更新は？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    2026-01-19。最新機能と40個のFAQが追加されました。
+                  </div>
+                </div>
+
               ` : lang === 'zh' ? `
+
                 <div class="faq-item" style="margin-bottom: 16px;">
                   <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
                     Q1: K-Taste Route是什么？
@@ -2340,7 +3187,289 @@ app.get('/', async (c) => {
                     选择套餐 → 填写表格 → 提交（无需预付） → 1-2天内工作人员联系 → 确认详情后付款
                   </div>
                 </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q6: 与其他平台有什么不同？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    不依赖社交媒体网红，而是基于政府认证+当地推荐。提供以机场为中心的路线和外国游客友好的价格信息。
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q7: 6个类别是什么？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    机场可达型、KTX可达型、传统市场、老字号(20年+)、地方特色菜、山/海特色餐厅分类。
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q8: 政府认证是什么？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    地方政府对卫生、味道、服务、传统性进行综合评估认证的餐厅。卡片上显示✓标记。
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q9: Local Score是什么？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    当地推荐度评分(1-100)。90+强烈推荐，70-89常客店。
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q10: 餐厅总数是多少？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    目标：6个地区 × 6个类别 × 100+餐厅 = 3,600+餐厅。
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q11: 以机场为中心的路线？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    优先显示距离主要机场(仁川、金浦、金海、济州)30分钟内可达的餐厅。
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q12: 套餐包含什么？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    3-5天主题游、专业导游、交通、餐食(餐厅游)、住宿、外国游客友好服务。
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q13: 经济型套餐特点？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    招待所、公共交通、8-10人团、每天2-3家餐厅、基础导游。
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q14: 标准型套餐特点？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    四星酒店、专车、6-8人、每天3-4家餐厅、专业导游+翻译。
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q15: 豪华型套餐特点？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    五星酒店、专属导游+翻译、4-6人、每天4-5家餐厅、VIP预订服务。
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q16: 取消政策？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    提前7天免费取消，3-7天50%退款，3天内不退款。
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q17: 支付系统？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    目前：预订 → 工作人员联系 → 确认详情 → 付款。未来：计划集成Stripe。
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q18: 管理页面功能？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    4个标签：餐厅管理、评论管理、套餐管理、预订管理。
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q19: CSV批量上传？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    管理页面可一次上传150家餐厅。支持5种语言同时输入。
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q20: 如何切换语言？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    点击右上角语言下拉菜单(KO/EN/JA/ZH/TH)即可立即切换整个页面语言。
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q21: 提供API吗？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    是的。提供餐厅、套餐、预订、翻译、健康套餐的RESTful API。
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q22: 使用什么数据库？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    Cloudflare D1(边缘分布式SQLite)。免费套餐：每天10万次读取/5万次写入。
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q23: 设计理念？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    Eatwith风格设计，白色背景、强调留白、极简卡片布局。
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q24: 响应式断点？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    Mobile <768px, Tablet 768-1199px, Desktop ≥1200px。移动优先设计。
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q25: 旅行社合作？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    通过合作伙伴页面申请。提供预订API。佣金：15-25%。
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q26: 政府合作？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    地方政府提供餐厅数据库、共同品牌推广并获得统计报告。
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q27: API集成咨询？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    联系api@k-taste-route.com。提供API文档和示例代码。
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q28: 如何注册餐厅？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    政府：CSV批量上传。单个餐厅：发送申请至restaurant-apply@k-taste-route.com。
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q29: K-Medical Tourism是什么？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    基于庆山市的健康体检和韩方养生游。1-3天项目，面向外国人的专属套餐。
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q30: K-Medical价格？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    比首尔便宜30-40%。基础体检套餐：$500-1,200。
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q31: 体检后整合？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    根据体检结果，整合韩方治疗(针灸、中药、按摩)项目。
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q32: 针对国家的体检？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    根据各国关注的健康问题(胃癌、肝癌、乳腺癌筛查等)定制套餐。
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q33: 预订测试在哪？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    测试地址：https://3000-iwal8xk8gmflxvyhhxhol-2e1b9533.sandbox.novita.ai/reserve
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q34: 管理测试在哪？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    测试地址：https://3000-iwal8xk8gmflxvyhhxhol-2e1b9533.sandbox.novita.ai/admin
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q35: K-Medical页面？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    查看地址：https://3000-iwal8xk8gmflxvyhhxhol-2e1b9533.sandbox.novita.ai/medical
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q36: 联系邮箱？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    contact@k-taste-route.com (一般)、medical@k-taste-route.com (医疗)、partners@k-taste-route.com (合作)
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q37: 政府合作咨询？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    联系gov@k-taste-route.com咨询地方政府合作和数据提供。
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q38: 部署平台？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    部署在Cloudflare Pages，通过全球边缘网络提供服务。
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q39: 技术栈？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    Hono (后端)、TypeScript、Cloudflare Workers、D1 Database、Tailwind CSS (前端)
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q40: 最后更新？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    2026-01-19。添加了最新功能和40个FAQ。
+                  </div>
+                </div>
+
               ` : `
+
                 <div class="faq-item" style="margin-bottom: 16px;">
                   <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
                     Q1: K-Taste Route คืออะไร?
@@ -2381,8 +3510,289 @@ app.get('/', async (c) => {
                     เลือกแพ็คเกจ → กรอกแบบฟอร์ม → ส่ง(ไม่ต้องจ่ายล่วงหน้า) → เจ้าหน้าที่ติดต่อภายใน 1-2 วัน → ตกลงรายละเอียดและชำระเงิน
                   </div>
                 </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q6: แตกต่างจากแพลตฟอร์มอื่นอย่างไร?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    ไม่พึ่งพาอินฟลูเอนเซอร์โซเชียลมีเดีย แต่เน้นการรับรองจากรัฐบาล+คำแนะนำจากคนท้องถิ่น เส้นทางที่มีสนามบินเป็นศูนย์กลาง
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q7: 6 หมวดหมู่คืออะไร?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    ประเภท: เข้าถึงได้จากสนามบิน, เข้าถึงได้จาก KTX, ตลาดดั้งเดิม, ร้านเก่าแก่(20 ปี+), อาหารท้องถิ่น, พิเศษภูเขา/ทะเล
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q8: การรับรองจากรัฐบาลคืออะไร?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    รัฐบาลท้องถิ่นรับรองร้านอาหารตามสุขอนามัย รสชาติ การบริการ และประเพณี แสดงด้วยเครื่องหมาย✓บนการ์ด
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q9: Local Score คืออะไร?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    คะแนนแนะนำจากคนท้องถิ่น(1-100) 90+แนะนำอย่างยิ่ง, 70-89ร้านประจำ
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q10: จำนวนร้านอาหารทั้งหมด?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    เป้าหมาย: 6 ภูมิภาค × 6 หมวดหมู่ × 100+ ร้าน = 3,600+ ร้านอาหาร
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q11: เส้นทางที่มีสนามบินเป็นศูนย์กลาง?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    แสดงร้านอาหารที่เข้าถึงได้ภายใน 30 นาทีจากสนามบินหลัก(อินชอน คิมโป คิมแฮ เชจู)เป็นลำดับแรก
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q12: แพ็คเกจรวมอะไรบ้าง?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    ทัวร์ธีม 3-5 วัน, ไกด์มืออาชีพ, การเดินทาง, อาหาร(ทัวร์ร้านอาหาร), ที่พัก, บริการสำหรับชาวต่างชาติ
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q13: ลักษณะแพ็คเกจประหยัด?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    เกสต์เฮาส์, ขนส่งสาธารณะ, กลุ่ม 8-10 คน, 2-3 ร้าน/วัน, ไกด์พื้นฐาน
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q14: ลักษณะแพ็คเกจมาตรฐาน?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    โรงแรม 4 ดาว, รถส่วนตัว, 6-8 คน, 3-4 ร้าน/วัน, ไกด์มืออาชีพ+ล่าม
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q15: ลักษณะแพ็คเกจพรีเมียม?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    โรงแรม 5 ดาว, ไกด์เฉพาะ+ล่าม, 4-6 คน, 4-5 ร้าน/วัน, บริการจองแบบ VIP
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q16: นโยบายการยกเลิก?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    ยกเลิกฟรีก่อน 7+ วัน, คืนเงิน 50% สำหรับ 3-7 วัน, ไม่คืนเงินภายใน 3 วัน
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q17: ระบบการชำระเงิน?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    ปัจจุบัน: จอง → เจ้าหน้าที่ติดต่อ → ยืนยัน → ชำระเงิน อนาคต: วางแผนผสาน Stripe
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q18: ฟีเจอร์หน้าผู้ดูแลระบบ?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    4 แท็บ: จัดการร้านอาหาร, จัดการรีวิว, จัดการแพ็คเกจ, จัดการการจอง
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q19: อัปโหลด CSV จำนวนมาก?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    อัปโหลดร้านอาหารได้สูงสุด 150 ร้านพร้อมกันผ่านหน้าผู้ดูแลระบบ รองรับ 5 ภาษาพร้อมกัน
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q20: สลับภาษาอย่างไร?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    คลิกดรอปดาวน์ภาษา(KO/EN/JA/ZH/TH)ที่มุมขวาบน ทั้งหน้าจะสลับทันที
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q21: มี API ให้หรือไม่?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    มี RESTful API สำหรับร้านอาหาร แพ็คเกจ การจอง การแปล และแพ็คเกจสุขภาพ
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q22: ใช้ฐานข้อมูลอะไร?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    Cloudflare D1 (SQLite แบบกระจายขอบ) ฟรี: อ่าน 10 หมื่น/เขียน 5 หมื่น ต่อวัน
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q23: แนวคิดการออกแบบ?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    ออกแบบสไตล์ Eatwith พื้นหลังขาว เน้นช่องว่าง เลย์เอาต์การ์ดแบบมินิมอล
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q24: จุดเปลี่ยนการตอบสนอง?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    มือถือ <768px, แท็บเล็ต 768-1199px, เดสก์ท็อป ≥1200px การออกแบบมือถือก่อน
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q25: ความร่วมมือกับบริษัททัวร์?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    สมัครผ่านหน้าพาร์ทเนอร์ มี API การจอง ค่าคอมมิชชั่น: 15-25%
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q26: ความร่วมมือกับรัฐบาล?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    รัฐบาลท้องถิ่นให้ฐานข้อมูลร้านอาหาร การสร้างแบรนด์ร่วม และรับรายงานสถิติ
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q27: สอบถามเกี่ยวกับการรวม API?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    ติดต่อ api@k-taste-route.com เอกสาร API และโค้ดตัวอย่างให้
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q28: ลงทะเบียนร้านอาหารอย่างไร?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    รัฐบาล: อัปโหลด CSV จำนวนมาก ร้านอาหารแต่ละแห่ง: สมัครที่ restaurant-apply@k-taste-route.com
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q29: K-Medical Tourism คืออะไร?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    ทัวร์ตรวจสุขภาพและความเป็นอยู่ที่ดีแพทย์แผนตะวันออกที่เมืองคยองซาน โปรแกรม 1-3 วัน สำหรับชาวต่างชาติโดยเฉพาะ
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q30: ราคา K-Medical?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    ถูกกว่าโซลประมาณ 30-40% แพ็คเกจตรวจสุขภาพพื้นฐาน: $500-1,200
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q31: การผสานหลังตรวจสุขภาพ?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    ตามผลตรวจ ผสานกับโปรแกรมการรักษาแพทย์แผนตะวันออก(ฝังเข็ม ยาจีน นวด)
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q32: การตรวจสุขภาพเฉพาะประเทศ?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    แพ็คเกจปรับแต่งตามปัญหาสุขภาพเฉพาะประเทศ(การตรวจมะเร็งกระเพาะอาหาร ตับ เต้านม ฯลฯ)
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q33: ทดสอบการจองที่ไหน?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    ทดสอบที่: https://3000-iwal8xk8gmflxvyhhxhol-2e1b9533.sandbox.novita.ai/reserve
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q34: ทดสอบผู้ดูแลระบบที่ไหน?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    ทดสอบที่: https://3000-iwal8xk8gmflxvyhhxhol-2e1b9533.sandbox.novita.ai/admin
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q35: หน้า K-Medical?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    ดูที่: https://3000-iwal8xk8gmflxvyhhxhol-2e1b9533.sandbox.novita.ai/medical
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q36: อีเมลติดต่อ?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    contact@k-taste-route.com (ทั่วไป), medical@k-taste-route.com (การแพทย์), partners@k-taste-route.com (พาร์ทเนอร์)
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q37: สอบถามความร่วมมือกับรัฐบาล?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    ติดต่อ gov@k-taste-route.com สำหรับความร่วมมือกับรัฐบาลท้องถิ่นและการให้ข้อมูล
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q38: แพลตฟอร์มการเปิดตัว?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    เปิดตัวบน Cloudflare Pages ให้บริการทั่วโลกผ่านเครือข่ายขอบ
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q39: สแต็กเทคโนโลยี?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    Hono (แบ็กเอนด์), TypeScript, Cloudflare Workers, D1 Database, Tailwind CSS (ฟรอนต์เอนด์)
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q40: อัปเดตล่าสุด?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    2026-01-19 เพิ่มฟีเจอร์ล่าสุดและ 40 FAQ
+                  </div>
+                </div>
               `}
             </div>
+
           </div>
         </div>
 
