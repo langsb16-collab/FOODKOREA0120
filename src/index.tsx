@@ -2129,8 +2129,28 @@ app.get('/', async (c) => {
         </footer>
 
         <!-- Scripts -->
-        <script src="https://cdn.jsdelivr.net/npm/axios@1.6.0/dist/axios.min.js"></script>
-        <script src="/static/app.js?v=2"></script>
+        <script>
+        // Simple language switcher - no dynamic content loading
+        document.addEventListener('DOMContentLoaded', () => {
+          const langButtons = document.querySelectorAll('.lang-btn');
+          langButtons.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+              const lang = e.target.dataset.lang;
+              // Redirect to language-specific page (future implementation)
+              console.log('Language switch:', lang);
+            });
+          });
+          
+          // Mobile menu toggle
+          const mobileToggle = document.querySelector('.mobile-menu-toggle');
+          const navMenu = document.querySelector('.navbar-menu');
+          if (mobileToggle && navMenu) {
+            mobileToggle.addEventListener('click', () => {
+              navMenu.classList.toggle('active');
+            });
+          }
+        });
+        </script>
     </body>
     </html>
   `)
