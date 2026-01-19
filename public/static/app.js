@@ -3,16 +3,26 @@
 
 class KTasteRoute {
   constructor() {
+    console.log('[K-Taste Route] Constructor called');
     this.currentLang = 'ko';
     this.translations = {};
     this.init();
   }
 
   async init() {
-    await this.loadTranslations();
-    this.setupEventListeners();
-    this.updateLanguage(this.currentLang);
-    this.loadHomePage();
+    console.log('[K-Taste Route] Init started');
+    try {
+      await this.loadTranslations();
+      console.log('[K-Taste Route] Translations loaded');
+      this.setupEventListeners();
+      console.log('[K-Taste Route] Event listeners set up');
+      this.updateLanguage(this.currentLang);
+      console.log('[K-Taste Route] Language updated');
+      await this.loadHomePage();
+      console.log('[K-Taste Route] Home page loaded');
+    } catch (error) {
+      console.error('[K-Taste Route] Init error:', error);
+    }
   }
 
   async loadTranslations() {
@@ -527,6 +537,9 @@ class KTasteRoute {
 }
 
 // Initialize app when DOM is ready
+console.log('[K-Taste Route] Script loaded');
 document.addEventListener('DOMContentLoaded', () => {
+  console.log('[K-Taste Route] DOM ready, initializing app...');
   window.app = new KTasteRoute();
+  console.log('[K-Taste Route] App initialized successfully');
 });
