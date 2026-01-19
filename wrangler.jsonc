@@ -1,16 +1,7 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "k-taste-route",
-  "main": "src/index.tsx",
+  "name": "foodkorea0120",
   "compatibility_date": "2026-01-15",
   "compatibility_flags": ["nodejs_compat"],
-  "pages_build_output_dir": "./dist",
-
-  "d1_databases": [
-    {
-      "binding": "DB",
-      "database_name": "webapp-production",
-      "database_id": ""
-    }
-  ]
+  "pages_build_output_dir": "./dist"
 }
