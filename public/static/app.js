@@ -34,14 +34,44 @@ class KTasteRoute {
   }
 
   setupEventListeners() {
-    // Language selector
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        const lang = e.target.dataset.lang;
-        this.updateLanguage(lang);
+    // Language selector dropdown
+    const langToggle = document.querySelector('.lang-selector-toggle');
+    const langDropdown = document.querySelector('.lang-dropdown');
+    
+    if (langToggle && langDropdown) {
+      langToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        langToggle.classList.toggle('active');
+        langDropdown.classList.toggle('active');
       });
-    });
+
+      // Close dropdown when clicking outside
+      document.addEventListener('click', (e) => {
+        if (!e.target.closest('.lang-selector')) {
+          langToggle.classList.remove('active');
+          langDropdown.classList.remove('active');
+        }
+      });
+
+      // Language selection
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          const lang = e.currentTarget.dataset.lang;
+          const langName = e.currentTarget.textContent.split(' ')[0]; // Get language name before checkmark
+          
+          // Update toggle text
+          langToggle.childNodes[0].textContent = langName;
+          
+          // Close dropdown
+          langToggle.classList.remove('active');
+          langDropdown.classList.remove('active');
+          
+          // Update language
+          this.updateLanguage(lang);
+        });
+      });
+    }
 
     // Navigation links - delegate to handle dynamic content
     document.addEventListener('click', (e) => {

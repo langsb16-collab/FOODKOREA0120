@@ -144,32 +144,95 @@ p {
   padding: 0.5rem;
 }
 
-/* Mobile Language Selector */
+/* Mobile Language Selector - Dropdown Style */
 .lang-selector {
-  display: flex;
-  gap: 0.5rem;
+  position: relative;
   padding-top: 0.5rem;
   border-top: 1px solid var(--color-border);
   margin-top: 0.5rem;
-  justify-content: center;
 }
 
-.lang-btn {
-  padding: 0.5rem 1rem;
+.lang-selector-toggle {
+  width: 100%;
+  padding: 0.75rem 1rem;
   border: 1px solid var(--color-border);
   background: white;
   cursor: pointer;
-  font-size: 13px;
-  color: var(--color-text-muted);
-  transition: all 0.2s ease;
+  font-size: 14px;
+  color: var(--color-text-main);
   font-weight: 500;
   border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.2s ease;
+}
+
+.lang-selector-toggle:hover {
+  border-color: var(--color-primary);
+}
+
+.lang-selector-toggle::after {
+  content: '▼';
+  font-size: 10px;
+  color: var(--color-text-muted);
+  transition: transform 0.2s ease;
+}
+
+.lang-selector-toggle.active::after {
+  transform: rotate(180deg);
+}
+
+.lang-dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: 0.5rem;
+  background: white;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  overflow: hidden;
+  z-index: 100;
+}
+
+.lang-dropdown.active {
+  display: block;
+}
+
+.lang-btn {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: none;
+  background: white;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--color-text-sub);
+  transition: all 0.2s ease;
+  font-weight: 500;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.lang-btn:hover {
+  background: var(--color-bg-soft);
+  color: var(--color-text-main);
 }
 
 .lang-btn.active {
-  color: var(--color-text-main);
-  border-color: var(--color-primary);
+  color: var(--color-primary);
   background: var(--color-bg-soft);
+  font-weight: 600;
+}
+
+.lang-btn.active::after {
+  content: '✓';
+  color: var(--color-primary);
+  font-weight: 600;
 }
 
 /* Mobile Hero Section */
@@ -577,12 +640,26 @@ p {
   }
 
   .lang-selector {
+    position: relative;
     border-top: none;
     padding-top: 0;
     margin-top: 0;
     margin-left: 1.5rem;
     padding-left: 1.5rem;
     border-left: 1px solid var(--color-border);
+  }
+
+  .lang-selector-toggle {
+    width: auto;
+    min-width: 140px;
+    padding: 0.5rem 1rem;
+    font-size: 14px;
+  }
+
+  .lang-dropdown {
+    right: 0;
+    left: auto;
+    min-width: 140px;
   }
 
   .hero {

@@ -1946,11 +1946,16 @@ app.get('/', (c) => {
                     <li><a href="/" class="navbar-link" data-page="packages" data-i18n="nav.packages">미식 투어</a></li>
                     
                     <div class="lang-selector">
-                        <button class="lang-btn active" data-lang="ko">한국어</button>
-                        <button class="lang-btn" data-lang="en">EN</button>
-                        <button class="lang-btn" data-lang="ja">日本</button>
-                        <button class="lang-btn" data-lang="zh">中文</button>
-                        <button class="lang-btn" data-lang="th">ไทย</button>
+                        <button class="lang-selector-toggle">
+                            <span>한국어</span>
+                        </button>
+                        <div class="lang-dropdown">
+                            <button class="lang-btn active" data-lang="ko">한국어 (Korean)</button>
+                            <button class="lang-btn" data-lang="en">English</button>
+                            <button class="lang-btn" data-lang="ja">日本語 (Japanese)</button>
+                            <button class="lang-btn" data-lang="zh">中文 (Chinese)</button>
+                            <button class="lang-btn" data-lang="th">ไทย (Thai)</button>
+                        </div>
                     </div>
                 </ul>
             </div>
