@@ -2167,45 +2167,221 @@ app.get('/', async (c) => {
 
         <!-- FAQ Chatbot -->
         <div id="faq-chatbot" style="position: fixed; bottom: 24px; right: 24px; z-index: 1000;">
-          <button id="chatbot-toggle" style="width: 60px; height: 60px; border-radius: 50%; background: #E85C4A; border: none; box-shadow: 0 4px 12px rgba(232, 92, 74, 0.3); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 28px; color: white;">
+          <button id="faq-toggle-btn" style="width: 60px; height: 60px; border-radius: 50%; background: #E85C4A; border: none; box-shadow: 0 4px 12px rgba(232, 92, 74, 0.3); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 28px; color: white;">
             💬
           </button>
-          <div id="chatbot-panel" style="display: none; position: absolute; bottom: 80px; right: 0; width: 360px; max-width: calc(100vw - 48px); height: 500px; background: white; border-radius: 16px; box-shadow: 0 8px 32px rgba(0,0,0,0.12); overflow: hidden; flex-direction: column;">
+          <div id="faq-panel" style="display: none; position: absolute; bottom: 80px; right: 0; width: 360px; max-width: calc(100vw - 48px); height: 500px; background: white; border-radius: 16px; box-shadow: 0 8px 32px rgba(0,0,0,0.12); overflow: hidden; flex-direction: column;">
             <div style="background: #E85C4A; color: white; padding: 16px; display: flex; justify-content: space-between; align-items: center;">
-              <h3 style="margin: 0; font-size: 16px; font-weight: 600;">FAQ - 자주 묻는 질문</h3>
-              <button id="chatbot-close" style="background: none; border: none; color: white; font-size: 24px; cursor: pointer; padding: 0; width: 32px; height: 32px;">×</button>
+              <h3 style="margin: 0; font-size: 16px; font-weight: 600;">FAQ</h3>
+              <button id="faq-close-btn" style="background: none; border: none; color: white; font-size: 24px; cursor: pointer; padding: 0; width: 32px; height: 32px;">×</button>
             </div>
-            <div id="faq-content" style="flex: 1; overflow-y: auto; padding: 16px;">
-              <div style="margin-bottom: 16px;">
-                <button class="faq-q" data-answer="K-Taste Route (LOCAL TABLE KOREA)는 해외 관광객을 위한 한국 로컬 미식 여행 플랫폼입니다. SNS 맛집이 아닌, 지자체 인증과 현지인이 추천하는 진짜 로컬 맛집을 소개합니다." style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px;">
-                  Q1: K-Taste Route가 무엇인가요?
-                </button>
-                <div class="faq-a" style="display: none; padding: 12px; background: white; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 14px; line-height: 1.6; color: #6B6B6B;"></div>
-              </div>
-              <div style="margin-bottom: 16px;">
-                <button class="faq-q" data-answer="5개 언어를 지원합니다: 한국어, 영어, 일본어, 중국어, 태국어. 우측 상단 언어 드롭다운에서 전환할 수 있습니다." style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px;">
-                  Q2: 어떤 언어를 지원하나요?
-                </button>
-                <div class="faq-a" style="display: none; padding: 12px; background: white; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 14px; line-height: 1.6; color: #6B6B6B;"></div>
-              </div>
-              <div style="margin-bottom: 16px;">
-                <button class="faq-q" data-answer="한국 전역 6대 권역을 다룹니다: 수도권(서울, 인천, 경기), 강원도, 충청도, 전라도, 경상도, 제주도" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px;">
-                  Q3: 어떤 지역을 다루나요?
-                </button>
-                <div class="faq-a" style="display: none; padding: 12px; background: white; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 14px; line-height: 1.6; color: #6B6B6B;"></div>
-              </div>
-              <div style="margin-bottom: 16px;">
-                <button class="faq-q" data-answer="3박4일: 저가형 $700-900, 스탠다드 $1,100-1,400, 고급형 $1,800-2,300. 4박5일: 저가형 $900-1,100, 스탠다드 $1,400-1,700, 고급형 $2,300-2,800" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px;">
-                  Q4: 패키지 가격은?
-                </button>
-                <div class="faq-a" style="display: none; padding: 12px; background: white; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 14px; line-height: 1.6; color: #6B6B6B;"></div>
-              </div>
-              <div style="margin-bottom: 16px;">
-                <button class="faq-q" data-answer="예약 양식 작성 → 제출 (선결제 없음) → 1-2일 내 담당자 연락 → 상세 조율 → 결제 진행. 문의: contact@k-taste-route.com" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px;">
-                  Q5: 예약은 어떻게 하나요?
-                </button>
-                <div class="faq-a" style="display: none; padding: 12px; background: white; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 14px; line-height: 1.6; color: #6B6B6B;"></div>
-              </div>
+            <div id="faq-list" style="flex: 1; overflow-y: auto; padding: 16px;">
+              ${lang === 'ko' ? `
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q1: K-Taste Route가 무엇인가요?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    K-Taste Route (LOCAL TABLE KOREA)는 해외 관광객을 위한 한국 로컬 미식 여행 플랫폼입니다. SNS 맛집이 아닌, 지자체 인증과 현지인이 추천하는 진짜 로컬 맛집을 소개합니다.
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q2: 어떤 언어를 지원하나요?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    한국어, 영어, 일본어, 중국어, 태국어 5개 언어를 지원합니다. 우측 상단 언어 드롭다운에서 실시간 전환 가능합니다.
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q3: 어떤 지역을 다루나요?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    한국 전역 6대 권역(수도권, 강원도, 충청도, 전라도, 경상도, 제주도)을 다룹니다. 목표는 3,600+ 로컬 맛집입니다.
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q4: 미식 투어 패키지 가격은?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    3박4일 $700-2,300, 4박5일 $900-2,800 (저가형/스탠다드/고급형 옵션)
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q5: 예약은 어떻게 하나요?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    패키지 선택 → 예약 양식 작성 → 제출(선결제 없음) → 1-2일 내 담당자 연락 → 상세 조율 후 결제
+                  </div>
+                </div>
+              ` : lang === 'en' ? `
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q1: What is K-Taste Route?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    K-Taste Route is a local Korean cuisine travel platform for international tourists. We introduce authentic restaurants certified by local governments.
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q2: Which languages are supported?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    5 languages: Korean, English, Japanese, Chinese, Thai. Switch via top-right dropdown.
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q3: Which regions are covered?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    6 major regions: Seoul Metro, Gangwon, Chungcheong, Jeolla, Gyeongsang, Jeju. Target: 3,600+ restaurants.
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q4: Tour package pricing?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    3-4 days: $700-2,300. 4-5 days: $900-2,800 (Budget/Standard/Premium options)
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q5: How to book?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    Select package → Fill form → Submit (no prepayment) → Staff contact within 1-2 days → Finalize and pay
+                  </div>
+                </div>
+              ` : lang === 'ja' ? `
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q1: K-Taste Routeとは？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    海外観光客向けの韓国ローカルグルメ旅行プラットフォームです。自治体認証と地元推薦の本物のレストランを紹介します。
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q2: 対応言語は？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    韓国語、英語、日本語、中国語、タイ語の5言語対応。右上のドロップダウンで切り替え可能。
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q3: 対応地域は？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    韓国全域6大圏域（首都圏、江原道、忠清道、全羅道、慶尚道、済州島）。目標は3,600+店舗。
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q4: ツアー料金は？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    3泊4日: $700-2,300、4泊5日: $900-2,800 (エコノミー/スタンダード/プレミアム)
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q5: 予約方法は？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    パッケージ選択 → フォーム記入 → 送信(前払い不要) → 1-2日以内に担当者連絡 → 詳細調整後決済
+                  </div>
+                </div>
+              ` : lang === 'zh' ? `
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q1: K-Taste Route是什么？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    为海外游客提供的韩国本地美食旅游平台。介绍经地方政府认证和当地人推荐的正宗餐厅。
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q2: 支持哪些语言？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    支持5种语言：韩语、英语、日语、中文、泰语。可在右上角下拉菜单切换。
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q3: 覆盖哪些地区？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    全韩6大地区（首都圈、江原道、忠清道、全罗道、庆尚道、济州岛）。目标：3,600+餐厅。
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q4: 旅游套餐价格？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    3晚4天: $700-2,300，4晚5天: $900-2,800（经济型/标准型/豪华型）
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q5: 如何预订？
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    选择套餐 → 填写表格 → 提交（无需预付） → 1-2天内工作人员联系 → 确认详情后付款
+                  </div>
+                </div>
+              ` : `
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q1: K-Taste Route คืออะไร?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    แพลตฟอร์มท่องเที่ยวอาหารท้องถิ่นเกาหลีสำหรับนักท่องเที่ยวต่างชาติ แนะนำร้านอาหารแท้ที่ได้รับการรับรองจากรัฐบาลท้องถิ่น
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q2: รองรับภาษาใดบ้าง?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    รองรับ 5 ภาษา: เกาหลี อังกฤษ ญี่ปุ่น จีน ไทย สลับได้ที่ดรอปดาวน์มุมขวาบน
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q3: ครอบคลุมพื้นที่ใดบ้าง?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    ครอบคลุม 6 ภูมิภาคหลักทั่วเกาหลี (เมืองหลวง คังวอน ชุงชอง จอลลา คยองซัง เชจู) เป้าหมาย: 3,600+ ร้านอาหาร
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q4: ราคาแพ็คเกจทัวร์?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    3 คืน 4 วัน: $700-2,300, 4 คืน 5 วัน: $900-2,800 (ประหยัด/มาตรฐาน/พรีเมียม)
+                  </div>
+                </div>
+                <div class="faq-item" style="margin-bottom: 16px;">
+                  <button class="faq-q" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px; font-weight: 500;">
+                    Q5: จองอย่างไร?
+                  </button>
+                  <div class="faq-a" style="display: none; padding: 12px; background: #FFF9F8; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: #555;">
+                    เลือกแพ็คเกจ → กรอกแบบฟอร์ม → ส่ง(ไม่ต้องจ่ายล่วงหน้า) → เจ้าหน้าที่ติดต่อภายใน 1-2 วัน → ตกลงรายละเอียดและชำระเงิน
+                  </div>
+                </div>
+              `}
             </div>
           </div>
         </div>
@@ -2214,34 +2390,35 @@ app.get('/', async (c) => {
         <script>
         // FAQ Chatbot
         document.addEventListener('DOMContentLoaded', () => {
-          const toggle = document.getElementById('chatbot-toggle');
-          const panel = document.getElementById('chatbot-panel');
-          const close = document.getElementById('chatbot-close');
+          const faqToggle = document.getElementById('faq-toggle-btn');
+          const faqPanel = document.getElementById('faq-panel');
+          const faqClose = document.getElementById('faq-close-btn');
           
-          toggle.addEventListener('click', () => {
-            panel.style.display = panel.style.display === 'none' ? 'flex' : 'none';
-          });
-          
-          close.addEventListener('click', () => {
-            panel.style.display = 'none';
-          });
-          
-          // FAQ Q&A toggle
-          document.querySelectorAll('.faq-q').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-              const answer = e.target.nextElementSibling;
-              const isVisible = answer.style.display === 'block';
-              
-              // Close all answers
-              document.querySelectorAll('.faq-a').forEach(a => a.style.display = 'none');
-              
-              // Toggle clicked answer
-              if (!isVisible) {
-                answer.textContent = e.target.dataset.answer;
-                answer.style.display = 'block';
-              }
+          if (faqToggle && faqPanel && faqClose) {
+            faqToggle.addEventListener('click', () => {
+              faqPanel.style.display = faqPanel.style.display === 'none' ? 'flex' : 'none';
             });
-          });
+            
+            faqClose.addEventListener('click', () => {
+              faqPanel.style.display = 'none';
+            });
+            
+            // FAQ Q&A toggle
+            document.querySelectorAll('.faq-q').forEach(btn => {
+              btn.addEventListener('click', (e) => {
+                const answer = e.target.nextElementSibling;
+                const isVisible = answer.style.display === 'block';
+                
+                // Close all answers
+                document.querySelectorAll('.faq-a').forEach(a => a.style.display = 'none');
+                
+                // Toggle clicked answer
+                if (!isVisible) {
+                  answer.style.display = 'block';
+                }
+              });
+            });
+          }
           
           // Language dropdown
           const langToggle = document.querySelector('.lang-selector-toggle');
