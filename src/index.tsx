@@ -2128,18 +2128,102 @@ app.get('/', async (c) => {
             </div>
         </footer>
 
+        <!-- FAQ Chatbot -->
+        <div id="faq-chatbot" style="position: fixed; bottom: 24px; right: 24px; z-index: 1000;">
+          <button id="chatbot-toggle" style="width: 60px; height: 60px; border-radius: 50%; background: #E85C4A; border: none; box-shadow: 0 4px 12px rgba(232, 92, 74, 0.3); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 28px; color: white;">
+            💬
+          </button>
+          <div id="chatbot-panel" style="display: none; position: absolute; bottom: 80px; right: 0; width: 360px; max-width: calc(100vw - 48px); height: 500px; background: white; border-radius: 16px; box-shadow: 0 8px 32px rgba(0,0,0,0.12); overflow: hidden; flex-direction: column;">
+            <div style="background: #E85C4A; color: white; padding: 16px; display: flex; justify-content: space-between; align-items: center;">
+              <h3 style="margin: 0; font-size: 16px; font-weight: 600;">FAQ - 자주 묻는 질문</h3>
+              <button id="chatbot-close" style="background: none; border: none; color: white; font-size: 24px; cursor: pointer; padding: 0; width: 32px; height: 32px;">×</button>
+            </div>
+            <div id="faq-content" style="flex: 1; overflow-y: auto; padding: 16px;">
+              <div style="margin-bottom: 16px;">
+                <button class="faq-q" data-answer="K-Taste Route (LOCAL TABLE KOREA)는 해외 관광객을 위한 한국 로컬 미식 여행 플랫폼입니다. SNS 맛집이 아닌, 지자체 인증과 현지인이 추천하는 진짜 로컬 맛집을 소개합니다." style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px;">
+                  Q1: K-Taste Route가 무엇인가요?
+                </button>
+                <div class="faq-a" style="display: none; padding: 12px; background: white; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 14px; line-height: 1.6; color: #6B6B6B;"></div>
+              </div>
+              <div style="margin-bottom: 16px;">
+                <button class="faq-q" data-answer="5개 언어를 지원합니다: 한국어, 영어, 일본어, 중국어, 태국어. 우측 상단 언어 드롭다운에서 전환할 수 있습니다." style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px;">
+                  Q2: 어떤 언어를 지원하나요?
+                </button>
+                <div class="faq-a" style="display: none; padding: 12px; background: white; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 14px; line-height: 1.6; color: #6B6B6B;"></div>
+              </div>
+              <div style="margin-bottom: 16px;">
+                <button class="faq-q" data-answer="한국 전역 6대 권역을 다룹니다: 수도권(서울, 인천, 경기), 강원도, 충청도, 전라도, 경상도, 제주도" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px;">
+                  Q3: 어떤 지역을 다루나요?
+                </button>
+                <div class="faq-a" style="display: none; padding: 12px; background: white; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 14px; line-height: 1.6; color: #6B6B6B;"></div>
+              </div>
+              <div style="margin-bottom: 16px;">
+                <button class="faq-q" data-answer="3박4일: 저가형 $700-900, 스탠다드 $1,100-1,400, 고급형 $1,800-2,300. 4박5일: 저가형 $900-1,100, 스탠다드 $1,400-1,700, 고급형 $2,300-2,800" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px;">
+                  Q4: 패키지 가격은?
+                </button>
+                <div class="faq-a" style="display: none; padding: 12px; background: white; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 14px; line-height: 1.6; color: #6B6B6B;"></div>
+              </div>
+              <div style="margin-bottom: 16px;">
+                <button class="faq-q" data-answer="예약 양식 작성 → 제출 (선결제 없음) → 1-2일 내 담당자 연락 → 상세 조율 → 결제 진행. 문의: contact@k-taste-route.com" style="width: 100%; text-align: left; padding: 12px; background: #F7F7F7; border: 1px solid #EDEDED; border-radius: 8px; cursor: pointer; font-size: 14px; color: #1F1F1F; margin-bottom: 8px;">
+                  Q5: 예약은 어떻게 하나요?
+                </button>
+                <div class="faq-a" style="display: none; padding: 12px; background: white; border-left: 3px solid #E85C4A; margin-bottom: 12px; font-size: 14px; line-height: 1.6; color: #6B6B6B;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <!-- Scripts -->
         <script>
-        // Simple language switcher - no dynamic content loading
+        // FAQ Chatbot
         document.addEventListener('DOMContentLoaded', () => {
-          const langButtons = document.querySelectorAll('.lang-btn');
-          langButtons.forEach(btn => {
+          const toggle = document.getElementById('chatbot-toggle');
+          const panel = document.getElementById('chatbot-panel');
+          const close = document.getElementById('chatbot-close');
+          
+          toggle.addEventListener('click', () => {
+            panel.style.display = panel.style.display === 'none' ? 'flex' : 'none';
+          });
+          
+          close.addEventListener('click', () => {
+            panel.style.display = 'none';
+          });
+          
+          // FAQ Q&A toggle
+          document.querySelectorAll('.faq-q').forEach(btn => {
             btn.addEventListener('click', (e) => {
-              const lang = e.target.dataset.lang;
-              // Redirect to language-specific page (future implementation)
-              console.log('Language switch:', lang);
+              const answer = e.target.nextElementSibling;
+              const isVisible = answer.style.display === 'block';
+              
+              // Close all answers
+              document.querySelectorAll('.faq-a').forEach(a => a.style.display = 'none');
+              
+              // Toggle clicked answer
+              if (!isVisible) {
+                answer.textContent = e.target.dataset.answer;
+                answer.style.display = 'block';
+              }
             });
           });
+          
+          // Language dropdown
+          const langToggle = document.querySelector('.lang-selector-toggle');
+          const langDropdown = document.querySelector('.lang-dropdown');
+          
+          if (langToggle && langDropdown) {
+            langToggle.addEventListener('click', (e) => {
+              e.stopPropagation();
+              langToggle.classList.toggle('active');
+              langDropdown.classList.toggle('active');
+            });
+            
+            document.addEventListener('click', (e) => {
+              if (!e.target.closest('.lang-selector')) {
+                langToggle.classList.remove('active');
+                langDropdown.classList.remove('active');
+              }
+            });
+          }
           
           // Mobile menu toggle
           const mobileToggle = document.querySelector('.mobile-menu-toggle');
