@@ -2005,14 +2005,20 @@ app.get('/', async (c) => {
                 
                 <!-- 3개 버튼 1열 배치 -->
                 <div class="hero-buttons" style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: 32px;">
-                    <button id="start-tour-btn" class="hero-cta-button" style="flex: 1; min-width: 200px; max-width: 280px; padding: 16px 24px; background: #E85C4A; color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.3s;">
-                        🚀 ${lang === 'ko' ? '미식 투어 시작하기' : lang === 'en' ? 'Start Food Tour' : lang === 'ja' ? '美食ツアー開始' : lang === 'zh' ? '开始美食之旅' : 'เริ่มทัวร์อาหาร'}
+                    <button id="start-tour-btn" class="hero-cta-button" style="flex: 1; min-width: 200px; max-width: 280px; padding: 16px 24px; background: #E85C4A; color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.3s; display: flex; flex-direction: column; align-items: center; line-height: 1.4;">
+                        <span style="font-size: 24px; margin-bottom: 4px;">🚀</span>
+                        <span>${lang === 'ko' ? '미식 투어' : lang === 'en' ? 'Food Tour' : lang === 'ja' ? '美食ツアー' : lang === 'zh' ? '美食之旅' : 'ทัวร์อาหาร'}</span>
+                        <span>${lang === 'ko' ? '시작하기' : lang === 'en' ? 'Start' : lang === 'ja' ? '開始' : lang === 'zh' ? '开始' : 'เริ่ม'}</span>
                     </button>
-                    <button id="local-picks-btn" class="hero-cta-button" style="flex: 1; min-width: 200px; max-width: 280px; padding: 16px 24px; background: #2C5F2D; color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.3s;">
-                        🍽️ ${lang === 'ko' ? '추천 로컬 맛집' : lang === 'en' ? 'Local Picks' : lang === 'ja' ? 'おすすめローカル店' : lang === 'zh' ? '推荐本地美食' : 'ร้านท้องถิ่นแนะนำ'}
+                    <button id="local-picks-btn" class="hero-cta-button" style="flex: 1; min-width: 200px; max-width: 280px; padding: 16px 24px; background: #2C5F2D; color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.3s; display: flex; flex-direction: column; align-items: center; line-height: 1.4;">
+                        <span style="font-size: 24px; margin-bottom: 4px;">🍽️</span>
+                        <span>${lang === 'ko' ? '추천 로컬' : lang === 'en' ? 'Local' : lang === 'ja' ? 'ローカル店' : lang === 'zh' ? '本地美食' : 'ท้องถิ่น'}</span>
+                        <span>${lang === 'ko' ? '맛집' : lang === 'en' ? 'Picks' : lang === 'ja' ? 'おすすめ' : lang === 'zh' ? '推荐' : 'แนะนำ'}</span>
                     </button>
-                    <button id="tour-packages-btn" class="hero-cta-button" style="flex: 1; min-width: 200px; max-width: 280px; padding: 16px 24px; background: #FF6B35; color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.3s;">
-                        📦 ${lang === 'ko' ? '미식 투어 패키지' : lang === 'en' ? 'Tour Packages' : lang === 'ja' ? 'ツアーパッケージ' : lang === 'zh' ? '旅游套餐' : 'แพ็คเกจทัวร์'}
+                    <button id="tour-packages-btn" class="hero-cta-button" style="flex: 1; min-width: 200px; max-width: 280px; padding: 16px 24px; background: #FF6B35; color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.3s; display: flex; flex-direction: column; align-items: center; line-height: 1.4;">
+                        <span style="font-size: 24px; margin-bottom: 4px;">📦</span>
+                        <span>${lang === 'ko' ? '미식 투어' : lang === 'en' ? 'Tour' : lang === 'ja' ? 'ツアー' : lang === 'zh' ? '旅游' : 'ทัวร์'}</span>
+                        <span>${lang === 'ko' ? '패키지' : lang === 'en' ? 'Packages' : lang === 'ja' ? 'パッケージ' : lang === 'zh' ? '套餐' : 'แพ็คเกจ'}</span>
                     </button>
                 </div>
             </div>
