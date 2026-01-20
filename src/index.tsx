@@ -2101,7 +2101,10 @@ app.get('/', async (c) => {
                 <div class="container">
                     <div class="section-header">
                         <h2 class="section-title">추천 로컬 맛집</h2>
-                        <p class="section-subtitle">지자체 인증과 현지인이 추천하는 진짜 로컬 맛집을 만나보세요</p>
+                        <p class="section-subtitle" style="line-height: 1.6;">
+                            지자체 인증과 현지인이 추천하는<br>
+                            진짜 로컬 맛집을 만나보세요
+                        </p>
                     </div>
                     <div class="grid grid-3">
                         ${restaurants.map(r => `
