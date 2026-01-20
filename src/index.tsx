@@ -1961,6 +1961,9 @@ app.get('/', async (c) => {
         <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
         
+        <!-- Three.js for Network Animation -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+        
         <!-- Styles -->
         <link href="/static/styles.css" rel="stylesheet">
         <style>
@@ -1979,6 +1982,9 @@ app.get('/', async (c) => {
         </style>
     </head>
     <body>
+        <!-- Network Animation Background -->
+        <div id="network-canvas-container" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none;"></div>
+        
         <!-- Navigation -->
         <nav class="navbar">
             <div class="navbar-container">
@@ -4098,6 +4104,120 @@ app.get('/', async (c) => {
             });
           }
         });
+        
+        // Three.js Network Animation
+        let scene, camera, renderer, particles, lines;
+        const particleCount = 120;
+        const maxDistance = 150;
+        const particlesData = [];
+        const container = document.getElementById('network-canvas-container');
+
+        if (container && typeof THREE !== 'undefined') {
+          initNetwork();
+          animateNetwork();
+        }
+
+        function initNetwork() {
+          scene = new THREE.Scene();
+          scene.background = new THREE.Color(0xfcfcfc);
+
+          camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 2000);
+          camera.position.z = 400;
+
+          const geometry = new THREE.BufferGeometry();
+          const particlePositions = new Float32Array(particleCount * 3);
+
+          for (let i = 0; i < particleCount; i++) {
+            const x = Math.random() * 800 - 400;
+            const y = Math.random() * 800 - 400;
+            const z = Math.random() * 800 - 400;
+
+            particlePositions[i * 3] = x;
+            particlePositions[i * 3 + 1] = y;
+            particlePositions[i * 3 + 2] = z;
+
+            particlesData.push({
+              velocity: new THREE.Vector3(-1 + Math.random() * 2, -1 + Math.random() * 2, -1 + Math.random() * 2),
+              numConnections: 0
+            });
+          }
+
+          const pMaterial = new THREE.PointsMaterial({
+            color: 0xdb4437,
+            size: 4,
+            blending: THREE.AdditiveBlending,
+            transparent: true,
+            sizeAttenuation: true
+          });
+
+          particles = new THREE.Points(geometry, pMaterial);
+          geometry.setAttribute('position', new THREE.BufferAttribute(particlePositions, 3).setUsage(THREE.DynamicDrawUsage));
+          scene.add(particles);
+
+          const lineGeometry = new THREE.BufferGeometry();
+          const lineMaterial = new THREE.LineBasicMaterial({
+            color: 0x999999,
+            transparent: true,
+            opacity: 0.3
+          });
+          lines = new THREE.LineSegments(lineGeometry, lineMaterial);
+          scene.add(lines);
+
+          renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+          renderer.setPixelRatio(window.devicePixelRatio);
+          renderer.setSize(window.innerWidth, window.innerHeight);
+          container.appendChild(renderer.domElement);
+
+          window.addEventListener('resize', onNetworkResize);
+        }
+
+        function onNetworkResize() {
+          camera.aspect = window.innerWidth / window.innerHeight;
+          camera.updateProjectionMatrix();
+          renderer.setSize(window.innerWidth, window.innerHeight);
+        }
+
+        function animateNetwork() {
+          const positions = particles.geometry.attributes.position.array;
+          const linePositions = new Float32Array(particleCount * particleCount * 3);
+          let lineCount = 0;
+
+          for (let i = 0; i < particleCount; i++) {
+            const i3 = i * 3;
+            positions[i3] += particlesData[i].velocity.x * 0.5;
+            positions[i3 + 1] += particlesData[i].velocity.y * 0.5;
+            positions[i3 + 2] += particlesData[i].velocity.z * 0.5;
+
+            if (positions[i3] < -400 || positions[i3] > 400) particlesData[i].velocity.x *= -1;
+            if (positions[i3 + 1] < -400 || positions[i3 + 1] > 400) particlesData[i].velocity.y *= -1;
+            if (positions[i3 + 2] < -400 || positions[i3 + 2] > 400) particlesData[i].velocity.z *= -1;
+
+            for (let j = i + 1; j < particleCount; j++) {
+              const j3 = j * 3;
+              const dx = positions[i3] - positions[j3];
+              const dy = positions[i3 + 1] - positions[j3 + 1];
+              const dz = positions[i3 + 2] - positions[j3 + 2];
+              const dist = Math.sqrt(dx * dx + dy * dy + dz * dz);
+
+              if (dist < maxDistance) {
+                linePositions[lineCount++] = positions[i3];
+                linePositions[lineCount++] = positions[i3 + 1];
+                linePositions[lineCount++] = positions[i3 + 2];
+                linePositions[lineCount++] = positions[j3];
+                linePositions[lineCount++] = positions[j3 + 1];
+                linePositions[lineCount++] = positions[j3 + 2];
+              }
+            }
+          }
+
+          lines.geometry.setAttribute('position', new THREE.BufferAttribute(linePositions.slice(0, lineCount), 3));
+          particles.geometry.attributes.position.needsUpdate = true;
+          
+          scene.rotation.y += 0.001;
+          
+          renderer.render(scene, camera);
+          requestAnimationFrame(animateNetwork);
+        }
         </script>
     </body>
     </html>
