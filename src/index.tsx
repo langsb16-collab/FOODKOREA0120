@@ -1963,6 +1963,20 @@ app.get('/', async (c) => {
         
         <!-- Styles -->
         <link href="/static/styles.css" rel="stylesheet">
+        <style>
+            /* 모바일 디바이스에서 버튼 크기 및 폰트 20% 축소 */
+            @media (max-width: 768px) {
+                .hero-cta-button {
+                    min-width: 160px !important;
+                    max-width: 224px !important;
+                    padding: 12.8px 19.2px !important;
+                    font-size: 12.8px !important;
+                }
+                .hero-cta-button span:first-child {
+                    font-size: 19.2px !important;
+                }
+            }
+        </style>
     </head>
     <body>
         <!-- Navigation -->
